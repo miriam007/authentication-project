@@ -10,6 +10,7 @@ class SignUp extends Component {
       username: "",
       password: "",
       confirmPassword: "",
+      role: "",
     };
   }
 
@@ -18,7 +19,8 @@ class SignUp extends Component {
     this.props.onSignUp({
       username: this.state.username,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword
+      confirmPassword: this.state.confirmPassword,
+      role: this.state.role
     });
   }
 
@@ -67,18 +69,24 @@ class SignUp extends Component {
         <FormGroup>
           <ControlLabel>Choose your role</ControlLabel>{' '}
           <Radio 
-            name="radioGroup" 
-            value="tutor" 
-            checked={this.state.selectedOption === "tutor"} 
-            onChange={this.handleOptionChange} 
+            type="radio"
+            name="role" 
+            value={this.state.role}
+            // checked={this.state.selectedOption === "tutor"} 
+            onChange={e => {
+              this.setState({[e.target.name]: e.target.value});
+            }}
             inline>
             Tutor
           </Radio>{' '}
           <Radio 
-            name="radioGroup" 
+            type="radio"
+            name="role" 
             value="student" 
-            checked={this.state.selectedOption === "student"} 
-            onChange={this.handleOptionChange} 
+            // checked={this.state.selectedOption === "student"} 
+            onChange={e => {
+              this.setState({[e.target.name]: e.target.value});
+            }}
             inline>
             Student
           </Radio>
