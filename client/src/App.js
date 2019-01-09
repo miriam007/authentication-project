@@ -44,6 +44,29 @@ class App extends Component {
 
   handleSignIn(credentials) {
     // Handle Sign Up
+    const { username, password } = credentials;
+    console.log(credentials)
+    if (!username.trim() || !password.trim() ) {
+      this.setState({
+        signUpSignInError: "Must Provide All Fields"
+      });
+    } else {
+
+      fetch("/api/sessions", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(credentials)
+      }).then((res) => {
+        return res.json();
+      }).then((data) => {
+        const { token } = data;
+        localStorage.setItem("token", token);
+        this.setState({
+          signUpSignInError: "",
+          authenticated: token
+        });
+      });
+    } 
   }
 
   handleSignOut() {
@@ -66,7 +89,7 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path="/" render={() => <h1>I am protected!</h1>} />
+          <Route exact path="/" render={() => <h1>Weclome!</h1>} />
           <Route exact path="/secret" component={Secret} />
           <Route render={() => <h1>NOT FOUND!</h1>} />
         </Switch>

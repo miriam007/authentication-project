@@ -1,24 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FormGroup, ControlLabel, FormControl, Button, Radio } from "react-bootstrap";
+import { FormGroup, ControlLabel, FormControl, Button } from "react-bootstrap";
 
-class SignUp extends Component {
+class SignIn extends Component {
   constructor() {
     super();
 
     this.state = {
       username: "",
-      password: "",
-      confirmPassword: "",
+      password: ""
     };
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSignUp({
+    this.props.onSignIn({
       username: this.state.username,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword
     });
   }
 
@@ -26,7 +24,7 @@ class SignUp extends Component {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup>
-          <ControlLabel>Username</ControlLabel>
+          <ControlLabel>Email</ControlLabel>
           <FormControl
             type="email"
             name="username"
@@ -37,7 +35,6 @@ class SignUp extends Component {
             value={this.state.username}
           />
         </FormGroup>
-
         <FormGroup>
           <ControlLabel>Password</ControlLabel>
           <FormControl
@@ -50,40 +47,16 @@ class SignUp extends Component {
             value={this.state.password}
           />
         </FormGroup>
-
-        <FormGroup>
-          <ControlLabel>Confirm Password</ControlLabel>
-          <FormControl
-            type="password"
-            name="confirmPassword"
-            onChange={e => {
-              this.setState({[e.target.name]: e.target.value});
-            }}
-            placeholder="Confirm Password"
-            value={this.state.confirmPassword}
-          />
-        </FormGroup>
-
-        <FormGroup>
-          <ControlLabel>Choose your role</ControlLabel>{' '}
-          <Radio name="radioGroup" inline>
-            Tutor
-          </Radio>{' '}
-          <Radio name="radioGroup" inline>
-            Student
-          </Radio>
-        </FormGroup>
-
         <Button type="submit">
-         Sign Up!
+         Sign In!
        </Button>
       </form>
     );
   }
 }
 
-SignUp.propTypes = {
-  onSignUp: PropTypes.func.isRequired
+SignIn.propTypes = {
+  onSignIn: PropTypes.func.isRequired
 };
 
-export default SignUp;
+export default SignIn;
