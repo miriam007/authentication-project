@@ -12,12 +12,12 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  },
-
-  role: {
-    type: Boolean,
-    required: true
   }
+
+  // role: {
+  //   type: Boolean,
+  //   required: true
+  // }
 });
 
 module.exports = mongoose.model("User", userSchema);

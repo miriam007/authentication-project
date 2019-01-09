@@ -39,6 +39,9 @@ function startWebServer(){
   app.use(userRoutes);
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
+  // app.use(ReviewRoutes);
+  // app.use(StudentRoutes);
+  // app.use(TutorRoutes);
 
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
@@ -46,7 +49,9 @@ function startWebServer(){
   app.get("/api/secret", function (req, res) {
     res.send(`The current user is ${req.user.username}`);
   });
-
+  app.get("api/welcome", function (req,res) {
+    res.send(`Welcome ${req.user.username}. Let's create your account.`);
+  });
 
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 import { FormGroup, ControlLabel, FormControl, Button, Radio } from "react-bootstrap";
 
 class SignUp extends Component {
@@ -10,7 +11,7 @@ class SignUp extends Component {
       username: "",
       password: "",
       confirmPassword: "",
-      role: "",
+      // role: "",
     };
   }
 
@@ -20,7 +21,7 @@ class SignUp extends Component {
       username: this.state.username,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword,
-      role: this.state.role
+      // role: this.state.role
     });
   }
 
@@ -65,7 +66,7 @@ class SignUp extends Component {
             value={this.state.confirmPassword}
           />
         </FormGroup>
-
+{/* 
         <FormGroup>
           <ControlLabel>Choose your role</ControlLabel>{' '}
           <Radio 
@@ -90,10 +91,19 @@ class SignUp extends Component {
             inline>
             Student
           </Radio>
-        </FormGroup>
+        </FormGroup> */}
 
-        <Button type="submit">
-         Sign Up!
+        {/* <Button type="submit" onClick={this.handleSubmit}>
+        <Link to={'/studentform'}>Sign up as Student</Link>
+       </Button>
+
+       <Button type="submit" onClick={this.handleSubmit}>
+        <Link to={'/tutorform'}>Sign up as Tutor</Link>
+       </Button> */}
+
+       <Button type="submit">
+       <Link to={'/welcome'}></Link>
+       Sign Up!
        </Button>
       </form>
     );
