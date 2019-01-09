@@ -81,6 +81,7 @@ class App extends Component {
       <SignUpSignIn 
         error={this.state.signUpSignInError} 
         onSignUp={this.handleSignUp} 
+        onSignIn={this.handleSignIn}
       />
     );
   }
@@ -89,7 +90,7 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path="/" render={() => <h1>Weclome!</h1>} />
+          <Route exact path="/" render={() => <h1>Welcome!</h1>} />
           <Route exact path="/secret" component={Secret} />
           <Route render={() => <h1>NOT FOUND!</h1>} />
         </Switch>

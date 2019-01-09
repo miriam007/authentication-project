@@ -33,16 +33,16 @@ class StudentForm extends Component {
             <form onSubmit={this.handleSubmit.bind(this)}>
             
             <FormGroup controlId="formControlsSelect">
-                <ControlLabel>What class are you in?</ControlLabel>
+                <ControlLabel>What class was your tutoring session for?</ControlLabel>
                     <FormControl componentClass="select" placeholder="Choose your class">
                         <option value="select">select</option>
-                        <option value="other">Intro to Web</option>
-                        <option value="other">JavaScript Intermediate</option>
-                        <option value="other">JavaScript Advanced</option>
-                        <option value="other">C# .NET Intermediate</option>
-                        <option value="other">C# .NET Advanced</option>
-                        <option value="other">UX/UI Intermediate</option>
-                        <option value="other">UX/UI Advanced</option>
+                        <option value="intro">Intro to Web</option>
+                        <option value="js2">JavaScript Intermediate</option>
+                        <option value="js3">JavaScript Advanced</option>
+                        <option value="net2">C# .NET Intermediate</option>
+                        <option value="net3">C# .NET Advanced</option>
+                        <option value="ux2">UX/UI Intermediate</option>
+                        <option value="ux3">UX/UI Advanced</option>
                     </FormControl>
             </FormGroup>
     {/* this form group might need to be deleted or at the top */}

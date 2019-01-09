@@ -8,7 +8,8 @@ class SignIn extends Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      
     };
   }
 
@@ -31,10 +32,11 @@ class SignIn extends Component {
             onChange={e => {
               this.setState({[e.target.name]: e.target.value});
             }}
-            placeholder="Enter Email"
+            placeholder="Enter Email Address"
             value={this.state.username}
           />
         </FormGroup>
+
         <FormGroup>
           <ControlLabel>Password</ControlLabel>
           <FormControl
@@ -47,6 +49,7 @@ class SignIn extends Component {
             value={this.state.password}
           />
         </FormGroup>
+
         <Button type="submit">
          Sign In!
        </Button>

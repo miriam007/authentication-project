@@ -26,7 +26,7 @@ class SignUp extends Component {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup>
-          <ControlLabel>Username</ControlLabel>
+          <ControlLabel>Email</ControlLabel>
           <FormControl
             type="email"
             name="username"
@@ -66,10 +66,20 @@ class SignUp extends Component {
 
         <FormGroup>
           <ControlLabel>Choose your role</ControlLabel>{' '}
-          <Radio name="radioGroup" inline>
+          <Radio 
+            name="radioGroup" 
+            value="tutor" 
+            checked={this.state.selectedOption === "tutor"} 
+            onChange={this.handleOptionChange} 
+            inline>
             Tutor
           </Radio>{' '}
-          <Radio name="radioGroup" inline>
+          <Radio 
+            name="radioGroup" 
+            value="student" 
+            checked={this.state.selectedOption === "student"} 
+            onChange={this.handleOptionChange} 
+            inline>
             Student
           </Radio>
         </FormGroup>
