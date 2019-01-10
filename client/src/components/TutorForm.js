@@ -102,7 +102,7 @@ class TutorForm extends Component {
                         />
                     </FormGroup>
                     
-                    <Button type="submit" className="submitFormButton">Save</Button>
+                    <Button type="submit" className="submitFormButton" onClick={this.handleSubmit}>Save</Button>
             </FormGroup>
             </form>
         )

@@ -18,13 +18,13 @@ class Welcome extends Component {
         this.props.onClick({
             
         });
-        // fetch("/api/users").then((res)=>{
-        //             return res.text();
-        //         }).then((welcome)=>{
-        //             this.setState({
-        //                 welcome: welcome
-        //             });
-        //         });
+        fetch("/api/users").then((res)=>{
+                    return res.text();
+                }).then((welcome)=>{
+                    this.setState({
+                        welcome: welcome
+                    });
+                });
       }
     //changed api from welcome and changed index.js from welcome
     // componentDidMount(){
@@ -42,15 +42,16 @@ class Welcome extends Component {
             <h1>Please choose your role</h1>
             
                 <Link to={'/studentform'}>
-                    <Button type="submit">Sign up as a Student</Button>
+                
+                    <Button type="submit"><Route path="/studentform" component={StudentForm}/>Sign up as a Student</Button>
                 </Link>
-                <Route path="/studentform" component={StudentForm}/>
+                {/* <Route path="/studentform" component={StudentForm}/> */}
             {' '}
             
                 <Link to={'/tutorform'}>
-                    <Button>Sign up as a Tutor</Button>
+                    <Button type="submit"><Route path="/tutorform" component={TutorForm}/>Sign up as a Tutor</Button>
                 </Link>
-                <Route path="/tutorform" component={TutorForm}/>
+                {/* <Route path="/tutorform" component={TutorForm}/> */}
     
             </div>
         )
