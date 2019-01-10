@@ -1,36 +1,57 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Route , Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import StudentForm from './StudentForm';
+import TutorForm from './TutorForm';
 
+//this message isn't showing up
 class Welcome extends Component {
     constructor(){
         super();
         this.state={
             welcome:""
         };
+        this.onClick=this.onClick.bind(this)
     }
-    componentDidMount(){
-        fetch("/api/welcome").then((res)=>{
-            return res.text();
-        }).then((welcome)=>{
-            this.setState({
-                welcome: welcome
-            });
+    onClick(event) {
+        event.preventDefault();
+        this.props.onClick({
+            
         });
-    }
+        // fetch("/api/users").then((res)=>{
+        //             return res.text();
+        //         }).then((welcome)=>{
+        //             this.setState({
+        //                 welcome: welcome
+        //             });
+        //         });
+      }
+    //changed api from welcome and changed index.js from welcome
+    // componentDidMount(){
+    //     fetch("/api/users").then((res)=>{
+    //         return res.text();
+    //     }).then((welcome)=>{
+    //         this.setState({
+    //             welcome: welcome
+    //         });
+    //     });
+    // }
     render(){
         return(
             <div>
             <h1>Please choose your role</h1>
-            <Button type="submit">
-                {/* <Link to={'/studentform'}></Link> */}
-                Sign up as a Student
-            </Button>
             
-            <Button type="submit">
-                {/* <Link to={'/tutorform'}></Link> */}
-                Sign up as a Tutor
-            </Button>
+                <Link to={'/studentform'}>
+                    <Button type="submit">Sign up as a Student</Button>
+                </Link>
+                <Route path="/studentform" component={StudentForm}/>
+            {' '}
+            
+                <Link to={'/tutorform'}>
+                    <Button>Sign up as a Tutor</Button>
+                </Link>
+                <Route path="/tutorform" component={TutorForm}/>
+    
             </div>
         )
     }

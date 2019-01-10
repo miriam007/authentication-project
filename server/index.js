@@ -49,7 +49,8 @@ function startWebServer(){
   app.get("/api/secret", function (req, res) {
     res.send(`The current user is ${req.user.username}`);
   });
-  app.get("api/welcome", function (req,res) {
+  //changed api from welcome.js and changed index.js from welcome
+  app.get("api/users", function (req,res) {
     res.send(`Welcome ${req.user.username}. Let's create your account.`);
   });
 

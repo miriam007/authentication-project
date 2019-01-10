@@ -101,7 +101,7 @@ class SignUp extends Component {
         <Link to={'/tutorform'}>Sign up as Tutor</Link>
        </Button> */}
 
-       <Button type="submit">
+       <Button type="submit" onClick={this.handleSubmit}>
        <Link to={'/welcome'}></Link>
        Sign Up!
        </Button>

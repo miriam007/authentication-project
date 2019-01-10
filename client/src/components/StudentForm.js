@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -103,7 +103,7 @@ class StudentForm extends Component {
                         />
                 </FormGroup>
                     
-                <Button type="submit" className="submitFormButton"></Button>
+                <Button type="submit" className="submitFormButton">Save</Button>
             </FormGroup>
             </form>
         )
