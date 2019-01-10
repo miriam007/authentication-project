@@ -2,6 +2,6 @@
 // const {create} = require( "../controllers/StudentController");
 // const router = express.Router();
 
-// router.post("/api/users", create);
+// router.post("/api/student", create);
 
 // module.exports = router;

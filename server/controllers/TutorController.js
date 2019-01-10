@@ -1,42 +1,33 @@
-// const tutorUser = require("../models/TutorModel");
-// const tokenForTutorUser = require("../services/token").tokenForTutorUser;
-// const hash = require("../services/hash").hash;
+// const tutorModel = require("../models/TutorModel");
 
-// function create(req, res, next) {
-//   const { email, password } = req.body;
-//   const t = email;
-//   // If no email or password was supplied return an error
-//   if (!email || !password) {
-//     return res.status(422)
-//     .json({ error: "You must provide an email and password" });
-//   }
-//   console.log("Look for a tutor user with the email");
-//   tutorUser.findOne({ email: t}).exec()
-//   .then((existingTutorUser) => {
-//       // If the tutor user exist return an error on sign up
-//     if (existingTutorUser) {
-//       console.log("This email is already being used");
-//       return res.status(422).json({ error: "Email is in use" });
-//     }
-//     console.log("This email is free to use");
-//     saveTutorUser(email,password,(token) => {
-//       res.json(token);
+// module.exports.list=(req, res)=>{
+//     tutorModel.find().exec().then((tutordata)=>{
+//         return res.json(tutordata)
+//     })
+// }
+
+// module.exports.show= (req, res)=>{
+//     tutorModel.findById(req.params.id).exec().then((tutordata)=>{
+//         return res.json(tutordata)
+//     })
+// }
+
+// module.exports.create=(req,res)=>{
+//     const t=new tutorModel({
+//         level:req.body.level,
+//         aboutme:req.body.aboutme,
+//         teachingstyle:req.body.teachingstyle,
+//         strenghts:req.body.strenghts
 //     });
-//   })
-//   .catch(err => next(err));
+//     t.save().then(savedTutor=>{
+//         return res.json(savedTutor)
+//     })
 // }
 
-// function saveTutorUser(email,password,done) {
-//   hash(password, null,function (hashedPassword) {
-//     // Create a new tutor user with the supplied email, and the hashed password
-//     const tutorUser = new TutorUser({ email, password: hashedPassword });
-//     console.log("Saving the tutor user");
-//     tutorUser.save()
-//       .then(t => {
-//         console.log("Tutor user has been saved to database");
-//         done({ token: tokenForTutorUser(t) });
-//       });
-//   });
+// module.exports.update= function update(req,res) {
+//     return res.json({theId: req.params.id});
 // }
 
-// exports.create = create;
+// module.exports.remove= function remove(req, res){
+//     return res.json({});
+// }

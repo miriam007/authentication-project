@@ -23,12 +23,12 @@ class Welcome extends Component {
             <div>
             <h1>Please choose your role</h1>
             <Button type="submit">
-                <Link to={'/studentform'}></Link>
+                {/* <Link to={'/studentform'}></Link> */}
                 Sign up as a Student
             </Button>
             
             <Button type="submit">
-                <Link to={'/tutorform'}></Link>
+                {/* <Link to={'/tutorform'}></Link> */}
                 Sign up as a Tutor
             </Button>
             </div>

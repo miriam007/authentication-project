@@ -5,6 +5,8 @@ import SignUpSignIn from "./SignUpSignIn";
 import TopNavbar from "./TopNavbar";
 import Secret from "./Secret";
 import Welcome from "./components/Welcome";
+// import StudentForm from "./components/StudentForm";
+// import TutorForm from "./components/TutorForm";
 
 class App extends Component {
   constructor() {
@@ -92,8 +94,10 @@ class App extends Component {
       <div>
         <Switch>
           {/* <Route exact path="/" render={() => <h1>Welcome!</h1>} /> */}
-          <Route exaxt path="/" render={() => <Welcome/>}/>
-          {/* <Route exact path="/secret" component={Secret} /> */}
+          <Route path="/" render={() => <Welcome/>}/>
+          {/* <Route path="/studentform" component={StudentForm}/>
+          <Route path="/tutorform" component={TutorForm}/>
+          <Route exact path="/secret" component={Secret} /> */}
           <Route render={() => <h1>NOT FOUND!</h1>} />
         </Switch>
       </div>
