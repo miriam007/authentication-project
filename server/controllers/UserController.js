@@ -38,5 +38,17 @@ function saveUser(username,password,done) {
       });
   });
 }
+function list(req, res, next){
+  User.find({}).exec().then((users)=>{
+    return res.json(users)
+  })
+}
 
+function show(req,res,next){
+  User.findById(req.params.id).exec().then((user)=>{
+    return res.json(user)
+  })
+}
 exports.create = create;
+exports.list=list;
+exports.show=show;

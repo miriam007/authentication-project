@@ -7,6 +7,10 @@ const tutorSchema = new Schema({
     required: true
   },
 
+  name: {
+    type: String
+  },
+
   aboutMe: {
     type: String
   },

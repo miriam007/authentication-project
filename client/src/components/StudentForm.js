@@ -7,25 +7,27 @@ class StudentForm extends Component {
         super();
         
         this.state = {
-            title: '',
-            body: [
-                {AboutMe: ''},
-                {LearningStyle: ''},
-                {Strengths: ''},
-                {Weaknesses: ''}  
-            ]
+            level: '',
+            name: '',
+            aboutMe: '',
+            learningStyle: '',
+            strengths: '',
+            weaknesses: ''
         }
+        this.handleLevelChange=this.handleLevelChange.bind(this);
     };
+    handleLevelChange(e){
+        this.setState({level:e.target.value})
+    }
     handleSubmit(event){
         event.preventDefault();
         this.props.onFormSubmit({
-            title: this.state.title,
-            body: [
-                {AboutMe: this.state.AboutMe},
-                {LearningStyle: this.state.LearningStyle},
-                {Strengths: this.state.Strengths},
-                {Weaknesses: this.state.Weaknesses}
-            ]
+                level: this.state.level,
+                name: this.state.name,
+                aboutMe: this.state.aboutMe,
+                learningStyle: this.state.learningStyle,
+                strengths: this.state.strengths,
+                weaknesses: this.state.weaknesses
         })
     }
     render(){
@@ -33,8 +35,8 @@ class StudentForm extends Component {
             <form onSubmit={this.handleSubmit.bind(this)}>
             
             <FormGroup controlId="formControlsSelect">
-                <ControlLabel>What class was your tutoring session for?</ControlLabel>
-                    <FormControl componentClass="select" placeholder="Choose your class">
+                <ControlLabel>What class was are you in?</ControlLabel>
+                    <FormControl onChange={this.handleLevelChange} componentClass="select" placeholder="Choose your class">
                         <option value="select">select</option>
                         <option value="intro">Intro to Web</option>
                         <option value="js2">JavaScript Intermediate</option>
@@ -47,17 +49,32 @@ class StudentForm extends Component {
             </FormGroup>
     {/* this form group might need to be deleted or at the top */}
              <FormGroup className="form">
+
+             <FormGroup controlId="formControlsTextarea">
+                <ControlLabel>Name</ControlLabel>
+                    <FormControl 
+                        componentClass="textarea" 
+                        placeholder="Name" 
+                        type="text"
+                        name="name"
+                        onChange={e=>
+                            {this.setState({[e.target.name]: e.target.value})}
+                        }
+                        value={this.state.name}
+                    />
+                </FormGroup>
+
                 <FormGroup controlId="formControlsTextarea">
                     <ControlLabel>About Me</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
                             placeholder="Tell us about yourself." 
                             type="text"
-                            name="body"
+                            name="aboutMe"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.AboutMe}
+                            value={this.state.aboutMe}
                         />
                 </FormGroup>
                     
@@ -67,11 +84,11 @@ class StudentForm extends Component {
                             componentClass="textarea" 
                             placeholder="How do you learn best?" 
                             type="text"
-                            name="body"
+                            name="learningStyle"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.LearningStyle}
+                            value={this.state.learningStyle}
                         />
                 </FormGroup>
 
@@ -81,11 +98,11 @@ class StudentForm extends Component {
                             componentClass="textarea" 
                             placeholder="What areas do you excel in?" 
                             type="text"
-                            name="body"
+                            name="strengths"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.Strengths}
+                            value={this.state.strengths}
                         />
                 </FormGroup>
                     
@@ -95,11 +112,11 @@ class StudentForm extends Component {
                             componentClass="textarea" 
                             placeholder="What do you want to work on?" 
                             type="text"
-                            name="body"
+                            name="weaknesses"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.Weaknesses}
+                            value={this.state.weaknesses}
                         />
                 </FormGroup>
                     

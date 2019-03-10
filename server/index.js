@@ -6,6 +6,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/UserRoutes");
+const studentRoutes = require("./routes/StudentRoutes");
+const tutorRoutes = require("./routes/TutorRoutes");
 const sessionRoutes = require("./routes/SessionRoutes");
 const authenticationRoutes = require("./routes/AuthenticationRoutes");
 
@@ -40,8 +42,8 @@ function startWebServer(){
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
   // app.use(ReviewRoutes);
-  // app.use(StudentRoutes);
-  // app.use(TutorRoutes);
+  app.use(studentRoutes);
+  app.use(tutorRoutes);
 
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
@@ -53,7 +55,9 @@ function startWebServer(){
   app.get("api/users", function (req,res) {
     res.send(`Welcome ${req.user.username}. Let's create your account.`);
   });
-
+  app.get("api/userId", function (req,res) {
+    res.send(`${req.user._id}`);
+  });
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
   });

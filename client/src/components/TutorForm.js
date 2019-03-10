@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 class TutorForm extends Component {
@@ -8,10 +8,11 @@ class TutorForm extends Component {
         this.state = {
             title: '',
             body: [
-                {AboutMe: ''},
-                {TeachingStyle: ''},
-                {Strengths: ''},
-                {ContactMe: ''}
+                {name: ''},
+                {aboutMe: ''},
+                {teachingStyle: ''},
+                {strengths: ''},
+                {contactMe: ''}
             ]
         }
     };
@@ -20,10 +21,11 @@ class TutorForm extends Component {
         this.props.onFormSubmit({
             title: this.state.title,
             body: [
-                {AboutMe: this.state.AboutMe},
-                {TeachingStyle: this.state.TeachingStyle},
-                {Strenghts: this.state.Strenghts},
-                {ContactMe: this.state.ContactMe}
+                {name: this.state.name},
+                {aboutMe: this.state.aboutMe},
+                {teachingStyle: this.state.teachingStyle},
+                {strengths: this.state.strengths},
+                {contactMe: this.state.contactMe}
             ]
         })
     }
@@ -31,32 +33,49 @@ class TutorForm extends Component {
         return(
             <form onSubmit={this.handleSubmit.bind(this)}>
 
-                <FormGroup controlId="formControlsSelectMultiple">
-                    <ControlLabel>What class or classes can you help with?</ControlLabel>
-                    <FormControl componentClass="select" placeholder="Choose your class">
-                        <option value="select">select</option>
-                        <option value="intro">Intro to Web</option>
-                        <option value="js2">JavaScript Intermediate</option>
-                        <option value="js3">JavaScript Advanced</option>
-                        <option value="net2">C# .NET Intermediate</option>
-                        <option value="net3">C# .NET Advanced</option>
-                        <option value="ux2">UX/UI Intermediate</option>
-                        <option value="ux3">UX/UI Advanced</option>
-                    </FormControl>
+                <FormGroup controlId="formHorizontal">
+                {/* <col smOffset={2} sm={10}> */}
+                    <ControlLabel>What class or classes can you help with? <br></br>Select all that apply.</ControlLabel>
+                    {/* <FormControl componentClass="select" placeholder="Choose your class"> */}
+                    
+                        <Checkbox value="intro">Intro to Web</Checkbox>
+                        <Checkbox value="js2">JavaScript Intermediate</Checkbox>
+                        <Checkbox value="js3">JavaScript Advanced</Checkbox>
+                        <Checkbox value="net2">C# .NET Intermediate</Checkbox>
+                        <Checkbox value="net3">C# .NET Advanced</Checkbox>
+                        <Checkbox value="ux2">UX/UI Intermediate</Checkbox>
+                        <Checkbox value="ux3">UX/UI Advanced</Checkbox>
+                    {/* </col> */}
+                    {/* </FormControl> */}
                 </FormGroup>
      {/* this form group might need to be at the top or deleted */}
                 <FormGroup className="form">
+
+                <FormGroup controlId="formControlsTextarea">
+                    <ControlLabel>Name</ControlLabel>
+                        <FormControl 
+                            componentClass="textarea" 
+                            placeholder="name" 
+                            type="text"
+                            name="name"
+                            onChange={e=>
+                                {this.setState({[e.target.name]: e.target.value})}
+                            }
+                            value={this.state.name}
+                        />
+                </FormGroup>
+
                     <FormGroup controlId="formControlsTextarea">
                         <ControlLabel>About Me</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
                             placeholder="Tell us about yourself." 
                             type="text"
-                            name="body"
+                            name="aboutMe"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.AboutMe}
+                            value={this.state.aboutMe}
                         />
                     </FormGroup>
                     
@@ -64,27 +83,27 @@ class TutorForm extends Component {
                         <ControlLabel>Teaching Style</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
-                            placeholder="What ways have you found it helpful to learn?" 
+                            placeholder="What ways have you found it helpful to teach?" 
                             type="text"
-                            name="body"
+                            name="teachingStyle"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.TeachingStyle}
+                            value={this.state.teachingStyle}
                         />
                     </FormGroup>
                     
                     <FormGroup controlId="formControlsTextarea">
-                        <ControlLabel>Strenghts</ControlLabel>
+                        <ControlLabel>Strengths</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
                             placeholder="What areas do you excel in?" 
                             type="text"
-                            name="body"
+                            name="strengths"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.Strengths}
+                            value={this.state.strengths}
                         />
                     </FormGroup>
                     
@@ -94,11 +113,11 @@ class TutorForm extends Component {
                             componentClass="textarea" 
                             placeholder="How would you like students to communicate with you?" 
                             type="text"
-                            name="body"
+                            name="contactMe"
                             onChange={e=>
                                 {this.setState({[e.target.name]: e.target.value})}
                             }
-                            value={this.state.ContactMe}
+                            value={this.state.contactMe}
                         />
                     </FormGroup>
                     

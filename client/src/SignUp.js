@@ -20,7 +20,7 @@ class SignUp extends Component {
     this.props.onSignUp({
       username: this.state.username,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword,
+      confirmPassword: this.state.confirmPassword
       // role: this.state.role
     });
   }
@@ -101,7 +101,7 @@ class SignUp extends Component {
         <Link to={'/tutorform'}>Sign up as Tutor</Link>
        </Button> */}
 
-       <Button type="submit" onClick={this.handleSubmit}>
+       <Button type="submit" onSignUp={this.handleSubmit}>
        <Link to={'/welcome'}></Link>
        Sign Up!
        </Button>

@@ -26,6 +26,12 @@ class App extends Component {
       this.setState({
         signUpSignInError: "Must Provide All Fields"
       });
+  
+    if (password.trim()!== confirmPassword.trim()) {
+      this.setState({
+        signUpSignInError: "Passwords do not match"
+      });
+    }
     } else {
 
       fetch("/api/users", {
@@ -39,7 +45,8 @@ class App extends Component {
         localStorage.setItem("token", token);
         this.setState({
           signUpSignInError: "",
-          authenticated: token
+          token: token,
+          authenticated: true
         });
       });
     }
@@ -66,7 +73,8 @@ class App extends Component {
         localStorage.setItem("token", token);
         this.setState({
           signUpSignInError: "",
-          authenticated: token
+          token: token,
+          authenticated: true
         });
       });
     } 
@@ -95,8 +103,8 @@ class App extends Component {
         <Switch>
           {/* <Route exact path="/" render={() => <h1>Welcome!</h1>} /> */}
           <Route path="/" render={() => <Welcome/>}/>
-          <Route path="/studentform" component={StudentForm}/>
-          <Route path="/tutorform" component={TutorForm}/>
+          <Route exact path="/StudentForm" component={StudentForm}/>
+          <Route exact path="/TutorForm" component={TutorForm}/>
           <Route exact path="/secret" component={Secret} />
           <Route render={() => <h1>NOT FOUND!</h1>} />
         </Switch>

@@ -6,6 +6,10 @@ const studentSchema = new Schema({
     type: String,
     required: true
   },
+  
+  name: {
+    type: String
+  },
 
   aboutMe: {
     type: String

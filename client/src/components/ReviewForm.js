@@ -12,21 +12,34 @@ class ReviewForm extends Component {
             review: ''
         }
     };
-handleSubmit(event){
-    event.preventDefault();
-    this.props.onFormSubmit({
-        date: this.state.date,
-        level:this.state.level,
-        review: this.state.review
-    })
-}
+
+    componentDidMount() {
+        fetch('/api/reviews').then((res)=> {
+            return res.text()
+        }).then((userId)=>{
+            this.setState({userId: userId})
+        });
+    }
+    handleSubmit(event){
+        event.preventDefault();
+        this.props.onFormSubmit({
+            date: this.state.date,
+            level:this.state.level,
+            review: this.state.review
+        })
+    }
+
+
     render(){
         return(
             <form onSubmit={this.handleSubmit.bind(this)}>
         
-                <FormGroup controlId="formControlsSelect">
+                <FormGroup className="FormLeft" controlId="formControlsSelect">
                     <ControlLabel>What class was your tutoring session for?</ControlLabel>
-                        <FormControl componentClass="select" placeholder="Choose your class">
+                        <FormControl 
+                        componentClass="select" 
+                        placeholder="Choose your class" 
+                        >
                             <option value="select">select</option>
                             <option value="intro">Intro to Web</option>
                             <option value="js2">JavaScript Intermediate</option>
@@ -52,7 +65,9 @@ handleSubmit(event){
                         />
                 </FormGroup>
                 
-                <Button type="submit" className="submitFormButton"></Button>
+                <Button type="submit" onClick={this.handleSubmit}>Submit Review</Button>
+
+                <Button type="button" onClick={this.handleDelete}>Delete</Button>
             </form>
         )
     }
