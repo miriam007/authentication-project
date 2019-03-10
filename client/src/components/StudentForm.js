@@ -16,20 +16,51 @@ class StudentForm extends Component {
         }
         this.handleLevelChange=this.handleLevelChange.bind(this);
     };
+
+    handleSubmit(event){
+        event.preventDefault();
+        const level = this.state.level;
+        const name = this.state.name;
+        const aboutMe = this.state.aboutMe;
+        const learningStyle = this.state.learningStyle;
+        const strengths = this.state.strengths;
+        const weaknesses = this.state.weaknesses;
+        let options = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ level, name, aboutMe, learningStyle, strengths, weaknesses })
+        }
+        fetch("/api/student", options).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+        // this.props.onFormSubmit({
+        //         level: this.state.level,
+        //         name: this.state.name,
+        //         aboutMe: this.state.aboutMe,
+        //         learningStyle: this.state.learningStyle,
+        //         strengths: this.state.strengths,
+        //         weaknesses: this.state.weaknesses
+        // })
+    }
+
     handleLevelChange(e){
         this.setState({level:e.target.value})
     }
-    handleSubmit(event){
-        event.preventDefault();
-        this.props.onFormSubmit({
-                level: this.state.level,
-                name: this.state.name,
-                aboutMe: this.state.aboutMe,
-                learningStyle: this.state.learningStyle,
-                strengths: this.state.strengths,
-                weaknesses: this.state.weaknesses
-        })
-    }
+    // handleSubmit(event){
+    //     event.preventDefault();
+    //     this.props.onFormSubmit({
+    //             level: this.state.level,
+    //             name: this.state.name,
+    //             aboutMe: this.state.aboutMe,
+    //             learningStyle: this.state.learningStyle,
+    //             strengths: this.state.strengths,
+    //             weaknesses: this.state.weaknesses
+    //     })
+    // }
     render(){
         return(
             <form onSubmit={this.handleSubmit.bind(this)}>

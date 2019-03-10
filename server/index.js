@@ -52,10 +52,10 @@ function startWebServer(){
     res.send(`The current user is ${req.user.username}`);
   });
   //changed api from welcome.js and changed index.js from welcome
-  app.get("api/users", function (req,res) {
+  app.get("/api/users", function (req,res) {
     res.send(`Welcome ${req.user.username}. Let's create your account.`);
   });
-  app.get("api/userId", function (req,res) {
+  app.get("/api/userId", function (req,res) {
     res.send(`${req.user._id}`);
   });
   app.get('*', function(req, res) {

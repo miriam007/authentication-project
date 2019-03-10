@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route , Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { nominalTypeHack } from 'prop-types';
 import StudentForm from './StudentForm';
 import TutorForm from './TutorForm';
-import { nominalTypeHack } from 'prop-types';
 
 //this message isn't showing up
 class Welcome extends Component {
@@ -72,12 +72,14 @@ class Welcome extends Component {
                         Sign up as a Student
                     </Button> 
                 </Link>
+                <Route path="/studentform" component={StudentForm}/>
             {' '}
                 <Link to={'/TutorForm'}>
                     <Button type="submit">
                     Sign up as a Tutor
                     </Button>
                 </Link>
+                <Route path="/tutorform" component={TutorForm}/>
             
             </div>
         )
