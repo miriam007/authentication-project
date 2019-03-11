@@ -93,13 +93,13 @@ class SignUp extends Component {
           </Radio>
         </FormGroup> 
 
-        <Button type="submit" onClick={this.handleSubmit}>
+        {/* <Button type="submit" onClick={this.handleSubmit}>
         <Link to={'/studentform'}>Sign up as Student</Link>
        </Button>
 
        <Button type="submit" onClick={this.handleSubmit}>
         <Link to={'/tutorform'}>Sign up as Tutor</Link>
-       </Button>
+       </Button> */}
 
        <Button type="submit" onSignUp={this.handleSubmit}>
        <Link to={'/welcome'}></Link>
