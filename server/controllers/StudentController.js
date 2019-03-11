@@ -18,7 +18,7 @@ module.exports.create=(req,res)=>{
         name:req.body.name,
         aboutme:req.body.aboutme,
         learningstyle:req.body.learningstyle,
-        strenghts:req.body.strenghts,
+        strengths:req.body.strengths,
         weaknesses:req.body.weaknesses
     });
     s.save().then(savedStudent=>{
