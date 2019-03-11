@@ -37,14 +37,6 @@ class StudentForm extends Component {
         }).catch((err)=>{
             console.log(err)
         })
-        // this.props.onFormSubmit({
-        //         level: this.state.level,
-        //         name: this.state.name,
-        //         aboutMe: this.state.aboutMe,
-        //         learningStyle: this.state.learningStyle,
-        //         strengths: this.state.strengths,
-        //         weaknesses: this.state.weaknesses
-        // })
     }
 
     handleLevelChange(e){
