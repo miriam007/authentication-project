@@ -4,13 +4,16 @@ import { Button } from 'react-bootstrap';
 import { nominalTypeHack } from 'prop-types';
 import StudentForm from './StudentForm';
 import TutorForm from './TutorForm';
+import Profile from './Profile';
+import ChooseRole from './ChooseRole';
 
 //this message isn't showing up
 class Welcome extends Component {
     constructor(){
         super();
         this.state={
-            welcome:"",
+            userId:"",
+            studentForms:[],
             studentClick: false,
             tutorClick: false
         };
@@ -24,22 +27,31 @@ class Welcome extends Component {
         this.props.onClick({
             
         });
-        fetch("/api/users").then((res)=>{
-                    return res.text();
-                }).then((welcome)=>{
-                    this.setState({
-                        welcome: welcome
-                    });
-                });
+        // fetch("/api/users").then((res)=>{
+        //             return res.text();
+        //         }).then((welcome)=>{
+        //             this.setState({
+        //                 welcome: welcome
+        //             });
+        //         });
       }
     //changed api from welcome and changed index.js from welcome
     componentDidMount(){
-        fetch("/api/users").then((res)=>{
+        fetch("/api/userId").then((res)=>{
             return res.text();
-        }).then((welcome)=>{
+        }).then((userId)=>{
             this.setState({
-                welcome: welcome
+                userId: userId
             });
+            console.log(this.state.userId)
+        });
+        fetch("/api/student").then((res)=>{
+            return res.json();
+        }).then((studentForms)=>{
+            this.setState({
+                studentForms: studentForms
+            });
+            console.log(this.state.studentForms)
         });
     }
     handleStudentClick(e){
@@ -49,9 +61,24 @@ class Welcome extends Component {
         this.setState({tutorClick: true})
     }
     handleStudentFormSubmit(studentData){
+        //alert('Profile information saved.')
         console.log(studentData)
     }
+    // handleTutorFormSubmit(tutorData){
+    //     console.log(tutorData)
+    // }
     render(){
+        let whatToShow='';
+        const studentForms = this.state.studentForms;
+        if(this.state.studentForm === []){
+            whatToShow = <ChooseRole/>
+        }
+        studentForms.map((form, index)=>{
+            if (form.userId === this.state.userId){
+                whatToShow=<Profile/>
+            } 
+        })
+        
         // let showStyle=''
         // const styles ={
         //     display: "none"
@@ -65,7 +92,7 @@ class Welcome extends Component {
         
         return(
             <div>
-            <h1>Please choose your role</h1>
+            {/* <h1>Please choose your role</h1>
             
                 <Link to={'/StudentForm'}>
                     <Button type="submit">
@@ -79,8 +106,8 @@ class Welcome extends Component {
                     Sign up as a Tutor
                     </Button>
                 </Link>
-                <Route path="/tutorform" component={TutorForm}/>
-            
+                <Route path="/tutorform" component={TutorForm}/> */}
+            {whatToShow}
             </div>
         )
     }

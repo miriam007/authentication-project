@@ -2,6 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tutorSchema = new Schema({
+  userId: {
+    type: String,
+  },
+
+  role: {
+    type:String,
+  },
+  
   level: {
     type: String,
     required: true

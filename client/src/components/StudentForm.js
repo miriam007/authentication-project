@@ -7,6 +7,8 @@ class StudentForm extends Component {
         super();
         
         this.state = {
+            userId: '',
+            studentForms:[],
             level: '',
             name: '',
             aboutMe: '',
@@ -15,10 +17,31 @@ class StudentForm extends Component {
             weaknesses: ''
         }
         this.handleLevelChange=this.handleLevelChange.bind(this);
+    
     };
-//new
+
+    componentDidMount(){
+        fetch("/api/userId").then((res)=>{
+            return res.text();
+        }).then((userId)=>{
+            this.setState({
+                userId: userId
+            });
+            console.log(this.state.userId)
+        });
+        fetch("/api/student").then((res)=>{
+            return res.json();
+        }).then((studentForms)=>{
+            this.setState({
+                studentForms: studentForms
+            });
+            console.log(this.state.studentForms)
+        });
+    }
     handleSubmit(event){
+        alert('Profile information saved.')
         event.preventDefault();
+        const userId=this.state.userId;
         const level = this.state.level;
         const name = this.state.name;
         const aboutMe = this.state.aboutMe;
@@ -28,7 +51,7 @@ class StudentForm extends Component {
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ level, name, aboutMe, learningStyle, strengths, weaknesses })
+            body: JSON.stringify({ userId, level, name, aboutMe, learningStyle, strengths, weaknesses })
         }
         fetch("/api/student", options).then((res)=>{
             return res.json()

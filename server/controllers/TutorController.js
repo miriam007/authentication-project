@@ -14,11 +14,13 @@ module.exports.show= (req, res)=>{
 
 module.exports.create=(req,res)=>{
     const t=new tutorModel({
+        userId:req.body.userId,
         level:req.body.level,
         name:req.body.name,
-        aboutme:req.body.aboutme,
-        teachingstyle:req.body.teachingstyle,
-        strengths:req.body.strengths
+        aboutMe:req.body.aboutMe,
+        teachingStyle:req.body.teachingStyle,
+        strengths:req.body.strengths,
+        contactMe:req.body.contactMe
     });
     t.save().then(savedTutor=>{
         return res.json(savedTutor)

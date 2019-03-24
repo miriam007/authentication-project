@@ -11,7 +11,7 @@ class SignUp extends Component {
       username: "",
       password: "",
       confirmPassword: "",
-      role: "",
+      //role: "",
     };
   }
 
@@ -20,8 +20,8 @@ class SignUp extends Component {
     this.props.onSignUp({
       username: this.state.username,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword,
-      role: this.state.role
+      confirmPassword: this.state.confirmPassword
+      //role: this.state.role
     });
   }
 
@@ -67,7 +67,7 @@ class SignUp extends Component {
           />
         </FormGroup>
 
-        <FormGroup>
+        {/* <FormGroup>
           <ControlLabel>Choose your role</ControlLabel>{' '}
           <Radio 
             type="radio"
@@ -91,7 +91,7 @@ class SignUp extends Component {
             inline>
             Student
           </Radio>
-        </FormGroup> 
+        </FormGroup>  */}
 
         {/* <Button type="submit" onClick={this.handleSubmit}>
         <Link to={'/studentform'}>Sign up as Student</Link>

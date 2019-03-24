@@ -11,13 +11,14 @@ module.exports.show= (req, res)=>{
         return res.json(student)
     })
 }
-
+// changed aboutme and learningstyle to camelcase, hopefully didnt break anything
 module.exports.create=(req,res)=>{
     const s=new studentModel({
+        userId:req.body.userId,
         level:req.body.level,
         name:req.body.name,
-        aboutme:req.body.aboutme,
-        learningstyle:req.body.learningstyle,
+        aboutMe:req.body.aboutMe,
+        learningStyle:req.body.learningStyle,
         strengths:req.body.strengths,
         weaknesses:req.body.weaknesses
     });

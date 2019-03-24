@@ -114,6 +114,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.authenticated)
     let whatToShow = "";
     if (this.state.authenticated) {
       whatToShow = this.renderApp();
