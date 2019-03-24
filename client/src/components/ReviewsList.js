@@ -21,7 +21,7 @@ return (
         { postReviews }
     </div>
 );
-);
+};
 postReviews.propTypes= {
     deleteReview: PropTypes.func.isRequired,
     reviews: PropTypes.array.isRequired,

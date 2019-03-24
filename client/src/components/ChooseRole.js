@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import StudentForm from './StudentForm';
 import TutorForm from './TutorForm';
 
-class ChooseRole extends Component{
+class ChooseRole extends Component {
     render(){
 
         return(
@@ -28,6 +28,6 @@ class ChooseRole extends Component{
         </div>
          )
     }
-}
+};
  
 export default ChooseRole;

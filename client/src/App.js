@@ -7,6 +7,7 @@ import Secret from "./Secret";
 import Welcome from "./components/Welcome";
 import StudentForm from "./components/StudentForm";
 import TutorForm from "./components/TutorForm";
+import Profile from "./components/Profile";
 
 class App extends Component {
   constructor() {
@@ -103,6 +104,7 @@ class App extends Component {
         <Switch>
           {/* <Route exact path="/" render={() => <h1>Welcome!</h1>} /> */}
           <Route exact path="/" render={() => <Welcome/>}/>
+          <Route path='/Profile' component={Profile}></Route>
           <Route path="/StudentForm" render={()=> <StudentForm/>}/>
           {/* <Route path="/StudentForm" component={StudentForm}/> */}
           <Route path="/TutorForm" component={TutorForm}/>

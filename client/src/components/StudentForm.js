@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Link, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Profile from './Profile';
 
 class StudentForm extends Component {
     constructor(){
@@ -166,7 +168,7 @@ class StudentForm extends Component {
                         />
                 </FormGroup>
                     
-                <Button type="submit" className="submitFormButton">Save</Button>
+                <Link to={'/Profile'}><Button type="submit" className="submitFormButton">Save</Button></Link>
             </FormGroup>
             </form>
         )

@@ -7,7 +7,6 @@ import TutorForm from './TutorForm';
 import Profile from './Profile';
 import ChooseRole from './ChooseRole';
 
-//this message isn't showing up
 class Welcome extends Component {
     constructor(){
         super();
@@ -70,13 +69,16 @@ class Welcome extends Component {
     render(){
         let whatToShow='';
         const studentForms = this.state.studentForms;
-        if(this.state.studentForm === []){
-            whatToShow = <ChooseRole/>
-        }
+        console.log(studentForms)
+        // if(this.state.studentForms === []){
+        //     whatToShow = <ChooseRole/>
+        // }
         studentForms.map((form, index)=>{
             if (form.userId === this.state.userId){
                 whatToShow=<Profile/>
-            } 
+            } else if (form.userId !== this.state.userId){
+                whatToShow = <ChooseRole/>
+            }
         })
         
         // let showStyle=''
