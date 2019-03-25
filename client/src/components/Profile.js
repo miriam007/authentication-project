@@ -21,32 +21,61 @@ class Profile extends Component {
         }
     };
         componentDidMount(){
-            fetch("/api/userId").then((res)=>{
-                return res.text();
-            }).then((userId)=>{
-                this.setState({
-                    userId: userId
-                });
-            });
+            this.props.loadUserId();
+            // fetch("/api/userId").then((res)=>{
+            //     return res.text();
+            // }).then((userId)=>{
+            //     this.setState({
+            //         userId: userId
+            //     });
+            // });
             fetch('/api/student')
             .then((res)=> res.json())
             .then((data)=>{
-                data.filter((user, index)=>{
-                    if(this.state.userId !== ""){
-                        console.log(user.userId === this.state.userId)
+                const filteredData = data.filter((student, index)=>{
+                    console.log(student.userId)
+                    if (student.userId === this.props.userId) {
+                        return student
                     }
-                    
                 })
-                console.log(this.state.userId)
-                console.log("data:", data)
+                this.setState({ studentForms: filteredData })
+                const name= this.state.studentForms[0].name;
+                const level= this.state.studentForms[0].level;
+                const aboutMe= this.state.studentForms[0].aboutMe;
+                const learningStyle= this.state.studentForms[0].learningStyle;
+                const strengths= this.state.studentForms[0].strengths;
+                const weaknesses= this.state.studentForms[0].weaknesses;
+                
+                console.log(aboutMe)
+                this.setState({ 
+                    name: name,
+                    level: level,
+                    aboutMe: aboutMe,
+                    learningStyle: learningStyle,
+                    strengths: strengths,
+                    weaknesses: weaknesses
+                 })
+                console.log(this.state.name)
+                console.log("mount:", this.state.studentForms[0].name)
+                // const filterByUserId= (data) =>{
+                //     return data.userId ==this.props.userId
+                // }
+                // const filteredData=data.filter(filterByUserId);
+                // this.setState({ studentForms: filteredData }) 
             })
+            
         }
     render(){
         let props=this.props;
         return(
             <div>
-                
-                Profile
+                <h1>Profile</h1>
+                <div>Name: {this.state.name}</div>
+                <div>Level: {this.state.level}</div>
+                <div>About Me: {this.state.aboutMe}</div>
+                <div>Learning Style: {this.state.learningStyle}</div>
+                <div>Strengths: {this.state.strengths}</div>
+                <div>Weaknesses: {this.state.weaknesses}</div>
             </div>
         )
     }
