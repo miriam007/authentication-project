@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, Route } from 'react-router-dom';
 import { FormGroup, FormControl, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -177,7 +178,7 @@ class TutorForm extends Component {
                         />
                     </FormGroup>
                     
-                    <Button type="submit" className="submitFormButton" >Save</Button>
+                    <Link to={'/TutorProfile'}><Button type="submit" className="submitFormButton">Save</Button></Link>
             </FormGroup>
             </form>
         )

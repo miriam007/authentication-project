@@ -9,6 +9,7 @@ import StudentForm from "./components/StudentForm";
 import TutorForm from "./components/TutorForm";
 //import Profile from "./components/Profile";
 import ProfileContainer from "./containers/ProfileContainer";
+import TutorProfileContainer from "./containers/TutorProfileContainer";
 
 class App extends Component {
   constructor() {
@@ -108,6 +109,7 @@ class App extends Component {
           <Route path='/Profile' component={ProfileContainer}></Route>
           <Route path="/StudentForm" render={()=> <StudentForm/>}/>
           {/* <Route path="/StudentForm" component={StudentForm}/> */}
+          <Route path='/TutorProfile' component={TutorProfileContainer}></Route>
           <Route path="/TutorForm" component={TutorForm}/>
           <Route exact path="/secret" component={Secret} />
           <Route render={() => <h1>NOT FOUND!</h1>} />

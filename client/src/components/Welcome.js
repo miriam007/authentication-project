@@ -53,6 +53,14 @@ class Welcome extends Component {
             });
             console.log(this.state.studentForms)
         });
+        fetch("/api/tutor").then((res)=>{
+            return res.json();
+        }).then((tutorForms)=>{
+            this.setState({
+                tutorForms: tutorForms
+            });
+            console.log(this.state.tutorForms)
+        });
     }
     handleStudentClick(e){
        this.setState({studentClick: true}) 
@@ -64,9 +72,9 @@ class Welcome extends Component {
         //alert('Profile information saved.')
         console.log(studentData)
     }
-    // handleTutorFormSubmit(tutorData){
-    //     console.log(tutorData)
-    // }
+    handleTutorFormSubmit(tutorData){
+        console.log(tutorData)
+    }
     render(){
         let whatToShow='';
         const studentForms = this.state.studentForms;
