@@ -16,6 +16,9 @@ const TopNavbar = (props) => {
         <Nav pullRight>
           <Link to="/Profile"><Navbar.Text>Profile</Navbar.Text></Link>
         </Nav>
+        <Nav pullRight>
+          <Link to="/tutorProfile"><Navbar.Text>Tutor Profile</Navbar.Text></Link>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );

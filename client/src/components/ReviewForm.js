@@ -14,7 +14,7 @@ class ReviewForm extends Component {
     };
 
     componentDidMount() {
-        fetch('/api/reviews').then((res)=> {
+        fetch('/api/review').then((res)=> {
             return res.text()
         }).then((userId)=>{
             this.setState({userId: userId})
@@ -40,14 +40,14 @@ class ReviewForm extends Component {
                         componentClass="select" 
                         placeholder="Choose your class" 
                         >
-                            <option value="select">select</option>
-                            <option value="intro">Intro to Web</option>
-                            <option value="js2">JavaScript Intermediate</option>
-                            <option value="js3">JavaScript Advanced</option>
-                            <option value="net2">C# .NET Intermediate</option>
-                            <option value="net3">C# .NET Advanced</option>
-                            <option value="ux2">UX/UI Intermediate</option>
-                            <option value="ux3">UX/UI Advanced</option>
+                        <option value="select">select</option>
+                        <option value="Intro to Web">Intro to Web</option>
+                        <option value="JavaScript Intermediate">JavaScript Intermediate</option>
+                        <option value="JavaScript Advanced">JavaScript Advanced</option>
+                        <option value="C# .NET Intermediate">C# .NET Intermediate</option>
+                        <option value="C# .NET Advanced">C# .NET Advanced</option>
+                        <option value="UX/UI Intermediate">UX/UI Intermediate</option>
+                        <option value="UX/UI Advanced">UX/UI Advanced</option>
                         </FormControl>
                 </FormGroup>
                 
@@ -55,7 +55,7 @@ class ReviewForm extends Component {
                     <ControlLabel>Write a review</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
-                            placeholder="How was your tutoring session?" 
+                            placeholder="How was your tutoring session? Did you find the tutor helpful answering your questions and explaining concepts? Would you work with the tutor again?" 
                             type="text"
                             name="review"
                             onChange={e=>

@@ -95,13 +95,13 @@ class TutorForm extends Component {
                     <ControlLabel>What class or classes can you help with? <br></br>Select all that apply.</ControlLabel>
                     {/* <FormControl onChange={this.handleLevelChange} componentClass="select" placeholder="Choose your class"> */}
                     
-                        <Checkbox value="intro">Intro to Web</Checkbox>
-                        <Checkbox value="js2">JavaScript Intermediate</Checkbox>
-                        <Checkbox value="js3">JavaScript Advanced</Checkbox>
-                        <Checkbox value="net2">C# .NET Intermediate</Checkbox>
-                        <Checkbox value="net3">C# .NET Advanced</Checkbox>
-                        <Checkbox value="ux2">UX/UI Intermediate</Checkbox>
-                        <Checkbox value="ux3">UX/UI Advanced</Checkbox>
+                        <Checkbox value="Intro to Web">Intro to Web</Checkbox>
+                        <Checkbox value="JavaScript Intermediate">JavaScript Intermediate</Checkbox>
+                        <Checkbox value="JavaScript Advanced">JavaScript Advanced</Checkbox>
+                        <Checkbox value="C# .NET Intermediate">C# .NET Intermediate</Checkbox>
+                        <Checkbox value="C# .NET Advanced">C# .NET Advanced</Checkbox>
+                        <Checkbox value="UX/UI Intermediate">UX/UI Intermediate</Checkbox>
+                        <Checkbox value="UX/UI Advanced">UX/UI Advanced</Checkbox>
                     {/* </col> */}
                     {/* </FormControl> */}
                 </FormGroup>
@@ -140,7 +140,7 @@ class TutorForm extends Component {
                         <ControlLabel>Teaching Style</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
-                            placeholder="What ways have you found it helpful to teach?" 
+                            placeholder="What ways have you found it helpful to teach? In person, screen sharing, reading articles, tutorials, etc." 
                             type="text"
                             name="teachingStyle"
                             onChange={e=>
@@ -168,7 +168,7 @@ class TutorForm extends Component {
                         <ControlLabel>Contact Me</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
-                            placeholder="How would you like students to communicate with you?" 
+                            placeholder="How would you like students to communicate and schedule with you? Email, RocketChat, text, etc." 
                             type="text"
                             name="contactMe"
                             onChange={e=>

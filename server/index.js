@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/UserRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
 const tutorRoutes = require("./routes/TutorRoutes");
+const reviewRoutes = require("./routes/ReviewRoutes");
 const sessionRoutes = require("./routes/SessionRoutes");
 const authenticationRoutes = require("./routes/AuthenticationRoutes");
 
@@ -41,7 +42,7 @@ function startWebServer(){
   app.use(userRoutes);
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
-  // app.use(ReviewRoutes);
+  app.use(reviewRoutes);
   app.use(studentRoutes);
   app.use(tutorRoutes);
 

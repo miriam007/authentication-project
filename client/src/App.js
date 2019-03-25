@@ -106,10 +106,10 @@ class App extends Component {
         <Switch>
           {/* <Route exact path="/" render={() => <h1>Welcome!</h1>} /> */}
           <Route exact path="/" render={() => <Welcome/>}/>
-          <Route path='/Profile' component={ProfileContainer}></Route>
+          <Route path='/Profile' component={ProfileContainer}/>
           <Route path="/StudentForm" render={()=> <StudentForm/>}/>
           {/* <Route path="/StudentForm" component={StudentForm}/> */}
-          <Route path='/TutorProfile' component={TutorProfileContainer}></Route>
+          <Route path='/TutorProfile' component={TutorProfileContainer}/>
           <Route path="/TutorForm" component={TutorForm}/>
           <Route exact path="/secret" component={Secret} />
           <Route render={() => <h1>NOT FOUND!</h1>} />

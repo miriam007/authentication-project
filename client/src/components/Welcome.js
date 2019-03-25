@@ -5,6 +5,7 @@ import { nominalTypeHack } from 'prop-types';
 import StudentForm from './StudentForm';
 import TutorForm from './TutorForm';
 import Profile from './Profile';
+import TutorProfile from './TutorProfile';
 import ChooseRole from './ChooseRole';
 
 class Welcome extends Component {
@@ -88,6 +89,14 @@ class Welcome extends Component {
                 whatToShow=<Profile/>
             } else if (form.userId !== this.state.userId){
                 whatToShow = <ChooseRole/>
+            }
+        })
+        tutorForms.map((form, index)=>{
+            if (form.userId == this.state.userId) 
+            {
+                whatToShow=<TutorProfile/>
+            } else if (form.userId !== this.state.userId){
+                whatToShow= <ChooseRole/>
             }
         })
         

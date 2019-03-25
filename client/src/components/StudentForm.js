@@ -83,16 +83,16 @@ class StudentForm extends Component {
             <form onSubmit={this.handleSubmit.bind(this)}>
             
             <FormGroup controlId="formControlsSelect">
-                <ControlLabel>What class was are you in?</ControlLabel>
+                <ControlLabel>What class was are you enrolled in?</ControlLabel>
                     <FormControl onChange={this.handleLevelChange} componentClass="select" placeholder="Choose your class">
                         <option value="select">select</option>
-                        <option value="intro">Intro to Web</option>
-                        <option value="js2">JavaScript Intermediate</option>
-                        <option value="js3">JavaScript Advanced</option>
-                        <option value="net2">C# .NET Intermediate</option>
-                        <option value="net3">C# .NET Advanced</option>
-                        <option value="ux2">UX/UI Intermediate</option>
-                        <option value="ux3">UX/UI Advanced</option>
+                        <option value="Intro to Web">Intro to Web</option>
+                        <option value="JavaScript Intermediate">JavaScript Intermediate</option>
+                        <option value="JavaScript Advanced">JavaScript Advanced</option>
+                        <option value="C# .NET Intermediate">C# .NET Intermediate</option>
+                        <option value="C# .NET Advanced">C# .NET Advanced</option>
+                        <option value="UX/UI Intermediate">UX/UI Intermediate</option>
+                        <option value="UX/UI Advanced">UX/UI Advanced</option>
                     </FormControl>
             </FormGroup>
     {/* this form group might need to be deleted or at the top */}
@@ -130,7 +130,7 @@ class StudentForm extends Component {
                     <ControlLabel>Learning Style</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
-                            placeholder="How do you learn best?" 
+                            placeholder="How do you learn best? Example: In person, screen sharing, reading articles, tutorials, etc." 
                             type="text"
                             name="learningStyle"
                             onChange={e=>
@@ -158,7 +158,7 @@ class StudentForm extends Component {
                     <ControlLabel>Weaknesses</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
-                            placeholder="What do you want to work on?" 
+                            placeholder="What areas or concepts do you want to work on?" 
                             type="text"
                             name="weaknesses"
                             onChange={e=>

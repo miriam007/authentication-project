@@ -14,7 +14,6 @@ module.exports.show= (req, res)=>{
 
 module.exports.create=(req,res)=>{
     const r=new reviewModel({
-        date:req.body.date,
         level:req.body.level,
         review:req.body.review
     });
@@ -35,4 +34,6 @@ module.exports.update= (req,res) => {
     )
 }
 
-//need delete
+module.exports.remove= (req,res)=> {
+    return res.json({})
+}
