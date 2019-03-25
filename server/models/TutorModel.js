@@ -12,7 +12,6 @@ const tutorSchema = new Schema({
   
   level: {
     type: String,
-    required: true
   },
 
   name: {

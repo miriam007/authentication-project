@@ -13,6 +13,7 @@ class Welcome extends Component {
         this.state={
             userId:"",
             studentForms:[],
+            tutorForms: [],
             studentClick: false,
             tutorClick: false
         };
@@ -69,6 +70,7 @@ class Welcome extends Component {
     render(){
         let whatToShow='';
         const studentForms = this.state.studentForms;
+        const tutorForms=this.state.tutorForms;
         console.log(studentForms)
         // if(this.state.studentForms === []){
         //     whatToShow = <ChooseRole/>
