@@ -26,9 +26,7 @@ class StudentForm extends Component {
         fetch("/api/userId").then((res)=>{
             return res.text();
         }).then((userId)=>{
-            this.setState({
-                userId: userId
-            });
+            this.setState({userId: userId});
             console.log(this.state.userId)
         });
         fetch("/api/student").then((res)=>{

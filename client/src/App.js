@@ -7,9 +7,11 @@ import Secret from "./Secret";
 import Welcome from "./components/Welcome";
 import StudentForm from "./components/StudentForm";
 import TutorForm from "./components/TutorForm";
+import ReviewForm from "./components/ReviewForm";
 //import Profile from "./components/Profile";
 import ProfileContainer from "./containers/ProfileContainer";
 import TutorProfileContainer from "./containers/TutorProfileContainer";
+import ReviewContainer from "./containers/ReviewContainer";
 
 class App extends Component {
   constructor() {
@@ -111,6 +113,8 @@ class App extends Component {
           {/* <Route path="/StudentForm" component={StudentForm}/> */}
           <Route path='/TutorProfile' component={TutorProfileContainer}/>
           <Route path="/TutorForm" component={TutorForm}/>
+          <Route path="/ReviewForm" component={ReviewForm}/>
+          <Route path="/ReviewList" component={ReviewContainer}/>
           <Route exact path="/secret" component={Secret} />
           <Route render={() => <h1>NOT FOUND!</h1>} />
         </Switch>

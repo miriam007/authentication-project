@@ -14,6 +14,7 @@ module.exports.show= (req, res)=>{
 
 module.exports.create=(req,res)=>{
     const r=new reviewModel({
+        userId:req.body.userId,
         level:req.body.level,
         review:req.body.review
     });

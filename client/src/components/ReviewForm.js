@@ -7,26 +7,51 @@ class ReviewForm extends Component {
         super();
         
         this.state = {
-            date: '',
+            userId:'',
             level:'',
             review: ''
         }
+        this.handleLevelChange=this.handleLevelChange.bind(this);
     };
 
     componentDidMount() {
-        fetch('/api/review').then((res)=> {
+        fetch('/api/userId').then((res)=> {
             return res.text()
         }).then((userId)=>{
             this.setState({userId: userId})
         });
+        fetch('/api/review').then((res)=>{
+            return res.json();
+        }).then((reviewForms)=>{
+            this.setState({
+                reviewForms: reviewForms
+            });
+            console.log(this.state.reviewForms)
+        });
     }
+
     handleSubmit(event){
+        alert('Review submitted.')
         event.preventDefault();
-        this.props.onFormSubmit({
-            date: this.state.date,
-            level:this.state.level,
-            review: this.state.review
+        const userId=this.state.userId;
+        const level= this.state.level;
+        const review=this.state.review;
+        let options ={
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ userId, level, review })
+        }
+        fetch('./api/review', options).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
         })
+    }
+
+    handleLevelChange(e){
+        this.setState({level:e.target.value})
     }
 
 
@@ -37,6 +62,7 @@ class ReviewForm extends Component {
                 <FormGroup className="FormLeft" controlId="formControlsSelect">
                     <ControlLabel>What class was your tutoring session for?</ControlLabel>
                         <FormControl 
+                        onChange={this.handleLevelChange}
                         componentClass="select" 
                         placeholder="Choose your class" 
                         >
@@ -55,7 +81,7 @@ class ReviewForm extends Component {
                     <ControlLabel>Write a review</ControlLabel>
                         <FormControl 
                             componentClass="textarea" 
-                            placeholder="How was your tutoring session? Did you find the tutor helpful answering your questions and explaining concepts? Would you work with the tutor again?" 
+                            placeholder="How was your tutoring session? Did you find the tutor helpful answering your questions and explaining concepts? Would you work with this tutor again?" 
                             type="text"
                             name="review"
                             onChange={e=>
@@ -65,9 +91,9 @@ class ReviewForm extends Component {
                         />
                 </FormGroup>
                 
-                <Button type="submit" onClick={this.handleSubmit}>Submit Review</Button>
+                <Button type="submit">Submit Review</Button>
 
-                <Button type="button" onClick={this.handleDelete}>Delete</Button>
+                <Button type="button">Delete</Button>
             </form>
         )
     }

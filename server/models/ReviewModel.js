@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
 
+  userId: {
+    type: String,
+  },
+
   level: {
     type: String,
     required: true

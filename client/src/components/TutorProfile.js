@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReviewList from './ReviewList';
 // import { render } from 'react-dom';
 // import PropTypes from 'prop-types';
 // import StudentForm from './StudentForm';
