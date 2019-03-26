@@ -37,7 +37,7 @@ class ReviewForm extends Component {
         const level= this.state.level;
         const review=this.state.review;
         let options ={
-            method: "POST",
+            method: "GET",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ userId, level, review })
         }

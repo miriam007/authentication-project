@@ -26,8 +26,8 @@ class ReviewList extends Component {
                     }
                 })
                 this.setState({ reviewForms: filteredData })
-                const level=this.state.reviewForms.level;
-                const review=this.state.reviewForms.review;
+                const level=this.state.reviewForms[0].level;
+                const review=this.state.reviewForms[0].review;
                 console.log(review)
                 this.setState({
                     level: level,
