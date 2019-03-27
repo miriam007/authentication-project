@@ -3,6 +3,7 @@ import TutorProfile from '../components/TutorProfile';
 import { loadUserId } from '../actions';
 
 function mapStateToProps(state){
+    console.log('TutorProfileContainer.mapStateToProps', state)
     return{
         userId: state.currentUserId
     }

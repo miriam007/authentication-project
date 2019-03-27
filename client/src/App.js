@@ -13,6 +13,8 @@ import ProfileContainer from "./containers/ProfileContainer";
 import TutorProfileContainer from "./containers/TutorProfileContainer";
 import ReviewContainer from "./containers/ReviewContainer";
 
+import { loadUserId } from './actions/index';
+
 class App extends Component {
   constructor() {
     super();
@@ -46,6 +48,7 @@ class App extends Component {
       }).then((res) => {
         return res.json();
       }).then((data) => {
+        loadUserId();
         const { token } = data;
         localStorage.setItem("token", token);
         this.setState({

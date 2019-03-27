@@ -38,27 +38,7 @@ class TutorForm extends Component {
             console.log(this.state.tutorForms)
         });
     }
-    // handleSubmit(event){
-    //     event.preventDefault();
-    //     const level = this.state.level;
-    //     const name = this.state.name;
-    //     const aboutMe = this.state.aboutMe;
-    //     const learningStyle = this.state.learningStyle;
-    //     const strengths = this.state.strengths;
-    //     const weaknesses = this.state.weaknesses;
-    //     let options = {
-    //         method: "POST",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify({ level, name, aboutMe, learningStyle, strengths, weaknesses })
-    //     }
-    //     fetch("/api/student", options).then((res)=>{
-    //         return res.json()
-    //     }).then((res)=>{
-    //         console.log(res)
-    //     }).catch((err)=>{
-    //         console.log(err)
-    //     })
-    // }
+   
     handleSubmit(event){
         alert('Profile information saved.')
         event.preventDefault();
@@ -100,8 +80,6 @@ class TutorForm extends Component {
                         <Checkbox value="JavaScript Advanced">JavaScript Advanced</Checkbox>
                         <Checkbox value="C# .NET Intermediate">C# .NET Intermediate</Checkbox>
                         <Checkbox value="C# .NET Advanced">C# .NET Advanced</Checkbox>
-                        <Checkbox value="UX/UI Intermediate">UX/UI Intermediate</Checkbox>
-                        <Checkbox value="UX/UI Advanced">UX/UI Advanced</Checkbox>
                     {/* </col> */}
                     {/* </FormControl> */}
                 </FormGroup>

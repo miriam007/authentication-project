@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class ReviewForm extends Component {
@@ -14,13 +15,14 @@ class ReviewForm extends Component {
         this.handleLevelChange=this.handleLevelChange.bind(this);
     };
 
-    componentDidMount() {
-        fetch('/api/userId').then((res)=> {
-            return res.text()
+    componentDidMount(){
+        fetch("/api/userId").then((res)=>{
+            return res.text();
         }).then((userId)=>{
-            this.setState({userId: userId})
+            this.setState({userId: userId});
+            console.log(this.state.userId)
         });
-        fetch('/api/review').then((res)=>{
+        fetch("/api/review").then((res)=>{
             return res.json();
         }).then((reviewForms)=>{
             this.setState({
@@ -29,19 +31,19 @@ class ReviewForm extends Component {
             console.log(this.state.reviewForms)
         });
     }
-
+//should it be GET to get all the reviews?
     handleSubmit(event){
         alert('Review submitted.')
         event.preventDefault();
         const userId=this.state.userId;
         const level= this.state.level;
         const review=this.state.review;
-        let options ={
-            method: "GET",
+        let options = {
+            method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ userId, level, review })
         }
-        fetch('./api/review', options).then((res)=>{
+        fetch("./api/review", options).then((res)=>{
             return res.json()
         }).then((res)=>{
             console.log(res)
@@ -58,7 +60,7 @@ class ReviewForm extends Component {
     render(){
         return(
             <form onSubmit={this.handleSubmit.bind(this)}>
-        
+            <h1>Add a Review</h1>
                 <FormGroup className="FormLeft" controlId="formControlsSelect">
                     <ControlLabel>What class was your tutoring session for?</ControlLabel>
                         <FormControl 
@@ -72,8 +74,6 @@ class ReviewForm extends Component {
                         <option value="JavaScript Advanced">JavaScript Advanced</option>
                         <option value="C# .NET Intermediate">C# .NET Intermediate</option>
                         <option value="C# .NET Advanced">C# .NET Advanced</option>
-                        <option value="UX/UI Intermediate">UX/UI Intermediate</option>
-                        <option value="UX/UI Advanced">UX/UI Advanced</option>
                         </FormControl>
                 </FormGroup>
                 
@@ -91,7 +91,7 @@ class ReviewForm extends Component {
                         />
                 </FormGroup>
                 
-                <Button type="submit">Submit Review</Button>
+                <Link to={'/ReviewList'}><Button type="submit">Submit Review</Button></Link>
 
                 <Button type="button">Delete</Button>
             </form>

@@ -89,8 +89,6 @@ class StudentForm extends Component {
                         <option value="JavaScript Advanced">JavaScript Advanced</option>
                         <option value="C# .NET Intermediate">C# .NET Intermediate</option>
                         <option value="C# .NET Advanced">C# .NET Advanced</option>
-                        <option value="UX/UI Intermediate">UX/UI Intermediate</option>
-                        <option value="UX/UI Advanced">UX/UI Advanced</option>
                     </FormControl>
             </FormGroup>
     {/* this form group might need to be deleted or at the top */}

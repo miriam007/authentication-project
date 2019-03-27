@@ -7,6 +7,9 @@ import TutorForm from './TutorForm';
 import Profile from './Profile';
 import TutorProfile from './TutorProfile';
 import ChooseRole from './ChooseRole';
+import DisplayProfile from './DisplayProfile';
+import ProfileContainer from '../containers/ProfileContainer';
+import TutorProfileContainer from '../containers/TutorProfileContainer';
 
 class Welcome extends Component {
     constructor(){
@@ -38,6 +41,7 @@ class Welcome extends Component {
       }
     //changed api from welcome and changed index.js from welcome
     componentDidMount(){
+        console.log('props', this.props);
         fetch("/api/userId").then((res)=>{
             return res.text();
         }).then((userId)=>{
@@ -80,55 +84,49 @@ class Welcome extends Component {
         let whatToShow='';
         const studentForms = this.state.studentForms;
         const tutorForms=this.state.tutorForms;
-        console.log(studentForms)
+        console.log('**********************')
+        console.log(studentForms, this.state)
+        console.log('**********************')
+ 
         // if(this.state.studentForms === []){
         //     whatToShow = <ChooseRole/>
         // }
-        studentForms.map((form, index)=>{
-            if (form.userId === this.state.userId){
-                whatToShow=<Profile/>
-            } else if (form.userId !== this.state.userId){
-                whatToShow = <ChooseRole/>
-            }
-        })
-        tutorForms.map((form, index)=>{
-            if (form.userId == this.state.userId) 
-            {
-                whatToShow=<TutorProfile/>
-            } else if (form.userId !== this.state.userId){
-                whatToShow= <ChooseRole/>
-            }
-        })
+        const studentForm = studentForms.filter((form) => form.userId === this.state.userId);
+        const tutorForm = tutorForms.filter((form) => form.userId === this.state.userId);
         
-        // let showStyle=''
-        // const styles ={
-        //     display: "none"
-        // }
         
-        // if(this.state.tutorClick === false) {
-        //     showStyle=styles
-        // } else if (this.state.studentClick === false) {
-        //     showStyle=styles
-        // }
+        if (studentForm.length > 0) {
+            console.log('studentForm');
+            whatToShow = <ProfileContainer/>
+        } else if (tutorForm.length > 0) {
+            console.log('tutorContainer');
+            whatToShow = <TutorProfileContainer/>
+        } else {
+            console.log('chooseRole');
+            whatToShow = <ChooseRole />
+        }
+
+        // studentForms.map((form, index)=>{
+        //     if (form.userId === this.state.userId){
+        //         whatToShow=<Profile/>
+        //     } else if (form.userId !== this.state.userId){
+        //         whatToShow = <ChooseRole/>
+        //     }
+        // })
+        // tutorForms.map((form, index)=>{
+        //     if (form.userId == this.state.userId) 
+        //     {
+        //         whatToShow=<TutorProfile/>
+        //     } else if (form.userId !== this.state.userId){
+        //         whatToShow= <ChooseRole/>
+        //     }
+        // })
         
         return(
             <div>
-            {/* <h1>Please choose your role</h1>
-            
-                <Link to={'/StudentForm'}>
-                    <Button type="submit">
-                        Sign up as a Student
-                    </Button> 
-                </Link>
-                <Route path="/studentform" component={StudentForm}/>
-            {' '}
-                <Link to={'/TutorForm'}>
-                    <Button type="submit">
-                    Sign up as a Tutor
-                    </Button>
-                </Link>
-                <Route path="/tutorform" component={TutorForm}/> */}
+        
             {whatToShow}
+            {/* <DisplayProfile/> */}
             </div>
         )
     }
