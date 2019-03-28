@@ -6,6 +6,12 @@ module.exports.list=(req, res)=>{
     })
 }
 
+module.exports.currentStudents=(req, res)=>{
+    studentModel.findOne()({userId:req.user._id}).exec().then((student)=>{
+        return res.json(student)
+    })
+}
+
 module.exports.show= (req, res)=>{
     studentModel.findById(req.params.id).exec().then((student)=>{
         return res.json(student)

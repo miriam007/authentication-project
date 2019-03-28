@@ -38,16 +38,26 @@ class Profile extends Component {
                         return student
                     }
                 })
-                this.setState({ studentForms: filteredData })
-                const name= this.state.studentForms[0].name;
-                const level= this.state.studentForms[0].level;
-                const aboutMe= this.state.studentForms[0].aboutMe;
-                const learningStyle= this.state.studentForms[0].learningStyle;
-                const strengths= this.state.studentForms[0].strengths;
-                const weaknesses= this.state.studentForms[0].weaknesses;
                 
-                console.log(aboutMe)
+                const {
+                    name,
+                    level,
+                    aboutMe,
+                    learningStyle,
+                    strengths,
+                    weaknesses
+                } = this.state.studentForms[0];
+                // this.setState({ studentForms: filteredData })
+                // const name= this.state.studentForms[0].name;
+                // const level= this.state.studentForms[0].level;
+                // const aboutMe= this.state.studentForms[0].aboutMe;
+                // const learningStyle= this.state.studentForms[0].learningStyle;
+                // const strengths= this.state.studentForms[0].strengths;
+                // const weaknesses= this.state.studentForms[0].weaknesses;
+                
+                //console.log(aboutMe)
                 this.setState({ 
+                    studentForms: filteredData,
                     name: name,
                     level: level,
                     aboutMe: aboutMe,

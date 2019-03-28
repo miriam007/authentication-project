@@ -6,6 +6,12 @@ module.exports.list=(req, res)=>{
     })
 }
 
+module.exports.currentTutors=(req, res)=>{
+    tutorModel.findOne()({userId:req.user._id}).exec().then((tutor)=>{
+        return res.json(tutor)
+    })
+}
+
 module.exports.show= (req, res)=>{
     tutorModel.findById(req.params.id).exec().then((tutordata)=>{
         return res.json(tutordata)

@@ -9,7 +9,8 @@ class ReviewList extends Component {
         this.state= {
             userId: '',
             level: '',
-            review: ''
+            review: '',
+            reviewForms: [{ level: 'test', review: 'awesome'}]
         }
     };
     
@@ -26,21 +27,25 @@ class ReviewList extends Component {
                     }
                 })
                 this.setState({ reviewForms: filteredData })
-                const level=this.state.reviewForms[0].level;
-                const review=this.state.reviewForms[0].review;
-                console.log(review)
-                this.setState({
-                    level: level,
-                    review: review
-                })
+                // const level=this.state.reviewForms[0].level;
+                // const review=this.state.reviewForms[0].review;
+                // console.log(review)
+                // this.setState({
+                //     level: level,
+                //     review: review
+                // })
         })
     }
     render(){
         return(
             <div>
                 <h1>Reviews</h1>
-                <h3>Level: {this.state.level}</h3>
-                <div>Review: {this.state.review}</div>
+                {this.state.reviewForms.map((form, i) => {
+                    return <React.Fragment>
+                        <h3>Level: {form.level}</h3>
+                        <div>Review: {form.review}</div>
+                    </React.Fragment>
+                })}
             </div>
         )
     }

@@ -33,6 +33,8 @@ class TutorProfile extends Component {
                         return tutor
                     }
                 })
+                // TEMP
+                if (!this.state.tutorForms || this.state.tutorForms.length === 0) return;
                 console.log('tutorprofile filtereddata', data, filteredData);
                 const {
                     name,
