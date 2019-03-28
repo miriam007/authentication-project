@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import store from "./store";
 import { Provider } from "react-redux";
+import AppContainer from "./containers/AppContainer";
 
 const oldFetch = window.fetch;
 window.fetch = (url, settings = {}) => {
@@ -17,7 +18,7 @@ window.fetch = (url, settings = {}) => {
 
 
 ReactDOM.render(
-  <Provider store={store}><App /></Provider>,
+  <Provider store={store}><AppContainer /></Provider>,
   document.getElementById("root")
 );
 

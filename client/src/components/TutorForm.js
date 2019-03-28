@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import { FormGroup, FormControl, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -58,6 +58,7 @@ class TutorForm extends Component {
                 return res.json()
             }).then((res)=>{
                 console.log(res)
+                this.props.history.push('/TutorProfile');
             }).catch((err)=>{
                 console.log(err)
             })
@@ -156,7 +157,8 @@ class TutorForm extends Component {
                         />
                     </FormGroup>
                     
-                    <Link to={'/TutorProfile'}><Button type="submit" className="submitFormButton">Save</Button></Link>
+                    {/* <Link to={'/TutorProfile'}><Button type="submit" className="submitFormButton">Save</Button></Link> */}
+                    <Button type="submit" className="submitFormButton">Save</Button>
             </FormGroup>
             </form>
         )
@@ -168,4 +170,4 @@ TutorForm.propTypes={
     onFormSubmit: PropTypes.func.isRequired
 };
 
-export default TutorForm;
+export default withRouter(TutorForm);

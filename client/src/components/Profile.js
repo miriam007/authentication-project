@@ -21,23 +21,17 @@ class Profile extends Component {
         }
     };
         componentDidMount(){
-            this.props.loadUserId();
-            // fetch("/api/userId").then((res)=>{
-            //     return res.text();
-            // }).then((userId)=>{
-            //     this.setState({
-            //         userId: userId
-            //     });
-            // });
             fetch('/api/student')
             .then((res)=> res.json())
             .then((data)=>{
                 const filteredData = data.filter((student, index)=>{
-                    console.log(student.userId)
-                    if (student.userId === this.props.userId) {
+                    console.log(student.currentUserId)
+                    if (student.currentUserId === this.props.currentUserId) {
                         return student
                     }
                 })
+
+                console.log('profile', this.props.currentUserId, filteredData, data);
                 
                 const {
                     name,

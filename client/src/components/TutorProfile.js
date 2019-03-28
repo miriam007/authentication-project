@@ -22,41 +22,46 @@ class TutorProfile extends Component {
         }
     };
     componentDidMount() {
-        this.props.loadUserId(); 
-        console.log('this.props.userId', this.props.userId);
+        //this.props.loadUserId(); 
+        console.log('this.props.currentUserId', this.props.currentUserId);
         fetch('/api/tutor')
             .then((res) => res.json())
             .then((data) => {
-                const filteredData = data.filter((tutor, index) => {
-                    console.log(tutor.userId, this.props.userId)
-                    if (tutor.userId === this.props.userId) {
-                        return tutor
-                    }
-                })
+                const tutorProfile = data.filter(tutor => tutor.userId === this.props.currentUserId)[0];
+                // const filteredData = data.filter((tutor, index) => {
+                //     console.log(tutor.userId, this.props.currentUserId)
+                //     if (tutor.userId === this.props.currentUserId) {
+                //         return tutor
+                //     }
+                // })
                 // TEMP
-                if (!this.state.tutorForms || this.state.tutorForms.length === 0) return;
-                console.log('tutorprofile filtereddata', data, filteredData);
-                const {
-                    name,
-                    level,
-                    aboutMe,
-                    teachingStyle,
-                    strengths,
-                    contactMe
-                } = this.state.tutorForms[0];
+                console.log('tutorProfile', tutorProfile);
+                //if (!this.state.tutorForms || this.state.tutorForms.length === 0) return;
+                console.log('after if');
 
-                this.setState({
-                    tutorForms: filteredData,
-                    name: name,
-                    level: level,
-                    aboutMe: aboutMe,
-                    teachingStyle: teachingStyle,
-                    strengths: strengths,
-                    contactMe: contactMe
-                }, () => {
-                    console.log(this.state.name)
-                    console.log("mount:", this.state.tutorForms[0].name)
-                });
+                this.setState(tutorProfile);
+
+                // const {
+                //     name,
+                //     level,
+                //     aboutMe,
+                //     teachingStyle,
+                //     strengths,
+                //     contactMe
+                // } = this.state.tutorForms[0];
+
+                // this.setState({
+                //     tutorForms: filteredData,
+                //     name: name,
+                //     level: level,
+                //     aboutMe: aboutMe,
+                //     teachingStyle: teachingStyle,
+                //     strengths: strengths,
+                //     contactMe: contactMe
+                // }, () => {
+                //     console.log(this.state.name)
+                //     console.log("mount:", this.state.tutorForms[0].name)
+                // });
                 // const name= this.state.tutorForms[0].name;
                 // const level= this.state.tutorForms[0].level;
                 // const aboutMe= this.state.tutorForms[0].aboutMe;

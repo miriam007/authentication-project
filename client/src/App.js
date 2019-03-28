@@ -4,7 +4,7 @@ import "./App.css";
 import SignUpSignIn from "./SignUpSignIn";
 import TopNavbar from "./TopNavbar";
 import Secret from "./Secret";
-import Welcome from "./components/Welcome";
+import WelcomeContainer from "./containers/WelcomeContainer";
 import StudentForm from "./components/StudentForm";
 import TutorForm from "./components/TutorForm";
 import ReviewForm from "./components/ReviewForm";
@@ -12,6 +12,7 @@ import ReviewForm from "./components/ReviewForm";
 import ProfileContainer from "./containers/ProfileContainer";
 import TutorProfileContainer from "./containers/TutorProfileContainer";
 import ReviewContainer from "./containers/ReviewContainer";
+
 
 import { loadUserId } from './actions/index';
 
@@ -25,6 +26,12 @@ class App extends Component {
     this.handleSignIn = this.handleSignIn.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.state.authenticated) {
+      this.props.loadUserId();
+    }
   }
 
   handleSignUp(credentials) {
@@ -56,6 +63,7 @@ class App extends Component {
           token: token,
           authenticated: true
         });
+        this.props.loadUserId();
       });
     }
   }
@@ -84,6 +92,7 @@ class App extends Component {
           token: token,
           authenticated: true
         });
+        this.props.loadUserId();
       });
     } 
   }
@@ -93,6 +102,7 @@ class App extends Component {
     this.setState({
       authenticated: false
     });
+    this.props.setCurrentUserId(null);
   }
 
   renderSignUpSignIn() {
@@ -110,7 +120,7 @@ class App extends Component {
       <div>
         <Switch>
           {/* <Route exact path="/" render={() => <h1>Welcome!</h1>} /> */}
-          <Route exact path="/" render={() => <Welcome/>}/>
+          <Route exact path="/" render={() => <WelcomeContainer/>}/>
           <Route path='/Profile' component={ProfileContainer}/>
           <Route path="/StudentForm" render={()=> <StudentForm/>}/>
           {/* <Route path="/StudentForm" component={StudentForm}/> */}

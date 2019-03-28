@@ -4,7 +4,7 @@ import { loadUserId } from '../actions';
 
 function mapStateToProps(state){
     return{
-        userId: state.currentUserId
+        currentUserId: state.currentUserId
     }
 }
 

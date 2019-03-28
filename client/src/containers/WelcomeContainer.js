@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import TutorProfile from '../components/TutorProfile';
+import Welcome from '../components/Welcome';
 import { loadUserId } from '../actions';
 
 function mapStateToProps(state){
-    console.log('TutorProfileContainer.mapStateToProps', state)
     return{
         currentUserId: state.currentUserId
     }
@@ -17,5 +16,5 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-const TutorProfileContainer= connect(mapStateToProps, mapDispatchToProps)(TutorProfile)
-export default TutorProfileContainer;
+const WelcomeContainer= connect(mapStateToProps, mapDispatchToProps)(Welcome)
+export default WelcomeContainer;

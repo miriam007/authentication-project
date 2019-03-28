@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Profile from './Profile';
 
@@ -164,7 +164,7 @@ class StudentForm extends Component {
                         />
                 </FormGroup>
                     
-                <Link to={'/Profile'}><Button type="submit" className="submitFormButton">Save</Button></Link>
+                <Button type="submit" className="submitFormButton">Save</Button>
             </FormGroup>
             </form>
         )
@@ -176,4 +176,4 @@ StudentForm.propTypes={
     onFormSubmit: PropTypes.func.isRequired
 };
 
-export default StudentForm;
+export default withRouter(StudentForm);
