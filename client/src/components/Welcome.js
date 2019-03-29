@@ -39,7 +39,7 @@ class Welcome extends Component {
         //             });
         //         });
       }
-    //changed api from welcome and changed index.js from welcome
+    
     componentDidMount(){
         console.log('props', this.props);
         fetch("/api/userId").then((res)=>{
