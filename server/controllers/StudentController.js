@@ -6,8 +6,8 @@ module.exports.list=(req, res)=>{
     })
 }
 
-module.exports.currentStudents=(req, res)=>{
-    studentModel.findOne()({userId:req.user._id}).exec().then((student)=>{
+module.exports.currentStudent=(req, res)=>{
+    studentModel.findOne({userId:req.user._id}).exec().then((student)=>{
         return res.json(student)
     })
 }
