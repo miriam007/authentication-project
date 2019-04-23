@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route, withRouter } from 'react-router-dom';
 import { FormGroup, FormControl, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Checkboxes from '../components/Checkboxes';
 
 class TutorForm extends Component {
     constructor(){
@@ -70,20 +71,21 @@ class TutorForm extends Component {
     render(){
         return(
             <form onSubmit={this.handleSubmit.bind(this)}>
+                <Checkboxes/>
 
-                <FormGroup controlId="formHorizontal">
+                {/* <FormGroup controlId="formHorizontal">
                 {/* <col smOffset={2} sm={10}> */}
                     <ControlLabel>What class or classes can you help with? <br></br>Select all that apply.</ControlLabel>
                     {/* <FormControl onChange={this.handleLevelChange} componentClass="select" placeholder="Choose your class"> */}
                     
-                        <Checkbox value="Intro to Web">Intro to Web</Checkbox>
+                        {/* <Checkbox value="Intro to Web">Intro to Web</Checkbox>
                         <Checkbox value="JavaScript Intermediate">JavaScript Intermediate</Checkbox>
                         <Checkbox value="JavaScript Advanced">JavaScript Advanced</Checkbox>
                         <Checkbox value="C# .NET Intermediate">C# .NET Intermediate</Checkbox>
-                        <Checkbox value="C# .NET Advanced">C# .NET Advanced</Checkbox>
+                        <Checkbox value="C# .NET Advanced">C# .NET Advanced</Checkbox> */}
                     {/* </col> */}
                     {/* </FormControl> */}
-                </FormGroup>
+                {/* </FormGroup>  */}
      {/* this form group might need to be at the top or deleted */}
                 <FormGroup className="form">
 
