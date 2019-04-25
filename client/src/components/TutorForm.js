@@ -4,6 +4,14 @@ import { FormGroup, FormControl, ControlLabel, Button, Checkbox } from 'react-bo
 import PropTypes from 'prop-types';
 import Checkboxes from '../components/Checkboxes';
 
+const classCatalog= [
+    { code: 'intro', name: 'Intro to Web' },
+    { code: 'jsInt', name: 'Javascript Intermediate' },
+    { code: 'jsAdv', name: 'Javascript Advanced' },
+    { code: 'netInt', name: 'C# .NET Intermediate' },
+    { code: 'netAdv', name: 'C# .NET Advanced' },
+]
+
 class TutorForm extends Component {
     constructor(){
         super();
@@ -16,8 +24,9 @@ class TutorForm extends Component {
             aboutMe: '',
             teachingStyle: '',
             strengths: '',
-            contactMe: ''
-        }
+            contactMe: '',
+            selectedClasses: [],
+        };
         this.handleLevelChange=this.handleLevelChange.bind(this);
     };
 
@@ -26,17 +35,24 @@ class TutorForm extends Component {
             return res.text();
         }).then((userId)=>{
             this.setState({
-                userId: userId
+                userId: userId,
             });
             console.log(this.state.userId)
         });
         fetch("/api/tutor").then((res)=>{
             return res.json();
         }).then((tutorForms)=>{
+            const tutor= tutorForms[0];
             this.setState({
-                tutorForms: tutorForms
+                userId: tutor.userId,
+                level: tutor.level,
+                name: tutor.name,
+                aboutMe: tutor.aboutMe,
+                teachingStyle: tutor.teachingStyle,
+                strengths: tutor.strengths,
+                contactMe: tutor.contactMe,
+                selectedClasses: tutor.level,
             });
-            console.log(this.state.tutorForms)
         });
     }
    
@@ -44,12 +60,19 @@ class TutorForm extends Component {
         alert('Profile information saved.')
         event.preventDefault();
             const userId= this.state.userId;
-            const level= this.state.level;
+            const level= this.state.selectedClasses;
             const name= this.state.name;
             const aboutMe= this.state.aboutMe;
             const teachingStyle= this.state.teachingStyle;
             const strengths= this.state.strengths;
             const contactMe= this.state.contactMe;
+
+    // TODO: check if it is a new or current user.  if it is new,
+    // call POST /api/tutor to create the tutor record.  if is an
+    // existing user, call PUT /api/tutor/:userId to update. You'll
+    // need to build the url..., something like '/api/tutor/' + userId
+    
+    // call POST (to create) or PUT (to update)
             let options = {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -68,25 +91,42 @@ class TutorForm extends Component {
     handleLevelChange(e){
         this.setState({level:e.target.value})
     }
+
+    //this adds and takes away classes in the array selectedClasses
+    onClassSelected =(classCode) => {
+        const currentlySelectedClasses = this.state.selectedClasses;
+        let newSelectedClasses;
+        //if the class is already in the array, remove it
+        if (currentlySelectedClasses.includes(classCode)) {
+            newSelectedClasses= currentlySelectedClasses.filter((code)=> code !== classCode
+            );
+        } else {
+            //if the classes isn't in the array, add it
+            newSelectedClasses= [...currentlySelectedClasses, classCode];
+        }
+        this.setState({
+            selectedClasses: newSelectedClasses,
+        });
+        console.log('selectedClasses', newSelectedClasses);
+    };
+    //checks to see if the class is in the array selectedClasses
+    isClassSelected=(classCode)=> {
+        return this.state.selectedClasses.includes(classCode);
+    };
+
     render(){
         return(
             <form onSubmit={this.handleSubmit.bind(this)}>
-                <Checkboxes/>
+                <Checkboxes
+                    classCatalog={classCatalog}
+                    isClassSelected={this.isClassSelected}
+                    onClassSelected={this.onClassSelected}
+                />
 
                 {/* <FormGroup controlId="formHorizontal">
                 {/* <col smOffset={2} sm={10}> */}
-                    <ControlLabel>What class or classes can you help with? <br></br>Select all that apply.</ControlLabel>
-                    {/* <FormControl onChange={this.handleLevelChange} componentClass="select" placeholder="Choose your class"> */}
-                    
-                        {/* <Checkbox value="Intro to Web">Intro to Web</Checkbox>
-                        <Checkbox value="JavaScript Intermediate">JavaScript Intermediate</Checkbox>
-                        <Checkbox value="JavaScript Advanced">JavaScript Advanced</Checkbox>
-                        <Checkbox value="C# .NET Intermediate">C# .NET Intermediate</Checkbox>
-                        <Checkbox value="C# .NET Advanced">C# .NET Advanced</Checkbox> */}
-                    {/* </col> */}
-                    {/* </FormControl> */}
-                {/* </FormGroup>  */}
-     {/* this form group might need to be at the top or deleted */}
+                    <ControlLabel>What class or classes can you help with? <br/>Select all that apply.</ControlLabel>
+        
                 <FormGroup className="form">
 
                 <FormGroup controlId="formControlsTextarea">

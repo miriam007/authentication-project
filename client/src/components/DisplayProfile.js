@@ -4,6 +4,8 @@
 // import Profile from './Profile';
 // import TutorProfile from './TutorProfile';
 // import ChooseRole from './ChooseRole';
+// import ProfileContainer from '../containers/ProfileContainer';
+// import TutorProfileContainer from '../containers/TutorProfileContainer';
 
 // class DisplayProfile extends Component {
 //     constructor(){
@@ -15,10 +17,19 @@
 //             studentClick: false,
 //             tutorClick: false
 //         };
+//         this.onClick=this.onClick.bind(this)
+//         this.handleStudentClick = this.handleStudentClick.bind(this);
+//         this.handleTutorClick = this.handleTutorClick.bind(this);
+//         this.handleStudentFormSubmit=this.handleStudentFormSubmit.bind(this);
         
 //     }
-    
 
+//     onClick(event) {
+//         event.preventDefault();
+//         this.props.onClick({
+            
+//         });
+    
 //     componentDidMount(){
 //         fetch("/api/userId").then((res)=>{
 //             return res.text();
@@ -44,7 +55,7 @@
 //             });
 //             console.log(this.state.tutorForms)
 //         });
-
+//     }
 //     render(){
 //         let whatToShow='';
 //         const studentForms = this.state.studentForms;
@@ -59,7 +70,7 @@
 //             } else if (form.userId !== this.state.userId){
 //                 whatToShow = <ChooseRole/>
 //             }
-//         })
+//         });
 
 //         tutorForms.map((form, index)=>{
 //             if (form.userId === this.state.userId){
@@ -67,15 +78,14 @@
 //             } else if (form.userId !== this.state.userId){
 //                 whatToShow = <ChooseRole/>
 //             }
-//         })
+//         });
     
 //         return(
-//         <div>
-//         {whatToShow}
-        
-//         </div>
-//          )
+//             <div>
+//                 {whatToShow}
+//             </div>
+//         )
 //      }
-// }
+// };
  
 // export default DisplayProfile;
