@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import Checkboxes from '../components/Checkboxes';
 
 const classCatalog= [
-    { code: 'intro', name: 'Intro to Web' },
-    { code: 'jsInt', name: 'Javascript Intermediate' },
-    { code: 'jsAdv', name: 'Javascript Advanced' },
-    { code: 'netInt', name: 'C# .NET Intermediate' },
-    { code: 'netAdv', name: 'C# .NET Advanced' },
+    { code: 'Intro to Web', name: 'Intro to Web' },
+    { code: 'Javascript Intermediate', name: 'Javascript Intermediate' },
+    { code: 'Javascript Advanced', name: 'Javascript Advanced' },
+    { code: 'C# .NET Intermediate', name: 'C# .NET Intermediate' },
+    { code: 'C# .NET Advanced', name: 'C# .NET Advanced' },
 ]
 
 class TutorForm extends Component {
@@ -39,11 +39,18 @@ class TutorForm extends Component {
             });
             console.log(this.state.userId)
         });
-        fetch("/api/tutor").then((res)=>{
+        fetch("/api/currentTutor").then((res)=>{
             return res.json();
-        }).then((tutorForms)=>{
-            const tutor= tutorForms[0];
+        }).then((tutor)=>{
+            if (!tutor) {
+                this.setState({
+                    isNew: true
+                });
+                return;
+            }
+            console.log('tutor', tutor);
             this.setState({
+                tutorId: tutor._id,
                 userId: tutor.userId,
                 level: tutor.level,
                 name: tutor.name,
@@ -73,11 +80,21 @@ class TutorForm extends Component {
     // need to build the url..., something like '/api/tutor/' + userId
     
     // call POST (to create) or PUT (to update)
+    if (this.state.isNew) {
+
             let options = {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({ userId, level, name, aboutMe, teachingStyle, strengths, contactMe })
-            }
+                body: JSON.stringify({ 
+                    userId, 
+                    level, 
+                    name, 
+                    aboutMe, 
+                    teachingStyle, 
+                    strengths, 
+                    contactMe, 
+                })
+            };
             fetch("/api/tutor", options).then((res)=>{
                 return res.json()
             }).then((res)=>{
@@ -86,7 +103,33 @@ class TutorForm extends Component {
             }).catch((err)=>{
                 console.log(err)
             })
+    } else {
+        let options= {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userId,
+                level,
+                name,
+                aboutMe,
+                teachingStyle,
+                strengths,
+                contactMe,
+            }),
+        };
+        fetch('/api/tutor/' + this.state.tutorId, options)
+        .then((res) => {
+            return res.json();
+        })
+        .then((res) => {
+            console.log(res);
+            this.props.history.push('/TutorProfile');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     }
+}
     
     handleLevelChange(e){
         this.setState({level:e.target.value})
