@@ -2,10 +2,36 @@ import React, { Component } from 'react';
 import { Button, FormControl } from 'react-bootstrap';
 
 class SearchNav extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
-        this.state.search=''
+        this.state.search = {
+            searching=[]
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            searching: this.props.searchUser
+        })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            searching: nextProps.searchUser
+        })
+    }
+
+    handleChange(e) {
+        let searchList = [];
+        if (e.target.value !== "") {
+            
+        }
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        const search = this.state.search
     }
     render() {
         return (
