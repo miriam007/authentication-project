@@ -10,9 +10,9 @@ const TopNavbar = (props) => {
         <Nav pullRight>
           <NavItem onClick={props.onSignOut}>Sign Out</NavItem>
         </Nav>
-        <Nav pullRight>
+        {/* <Nav pullRight>
           <Link to="/secret"><Navbar.Text>Secret</Navbar.Text></Link>
-        </Nav>
+        </Nav> */}
         <Nav pullRight>
           <Link to="/Profile"><Navbar.Text>Profile</Navbar.Text></Link>
         </Nav>
