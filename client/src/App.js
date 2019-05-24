@@ -12,7 +12,7 @@ import ReviewForm from "./components/ReviewForm";
 import ProfileContainer from "./containers/ProfileContainer";
 import TutorProfileContainer from "./containers/TutorProfileContainer";
 import ReviewContainer from "./containers/ReviewContainer";
-
+import SearchContainer from "./containers/SearchContainer";
 
 import { loadUserId } from './actions/index';
 
@@ -128,6 +128,8 @@ class App extends Component {
           <Route path="/TutorForm" component={TutorForm}/>
           <Route path="/ReviewForm" component={ReviewForm}/>
           <Route path="/ReviewList" component={ReviewContainer}/>
+          <Route path="Search" component
+          ={SearchContainer}/>
           <Route exact path="/secret" component={Secret} />
           <Route render={() => <h1>NOT FOUND!</h1>} />
         </Switch>

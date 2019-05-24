@@ -23,7 +23,7 @@ const TopNavbar = (props) => {
         </Nav>
         <Nav pullRight>
           <Link to="/reviewForm"><Navbar.Text>Add a review</Navbar.Text></Link>
-          <Link to="/search"><Navbar.Text>Search</Navbar.Text></Link>
+          <Link to="/search"><Navbar.Text>Search for a Tutor</Navbar.Text></Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

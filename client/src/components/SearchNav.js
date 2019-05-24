@@ -25,7 +25,7 @@ class SearchNav extends Component {
     handleChange(e) {
         let searchList = [];
         if (e.target.value !== "") {
-            
+
         }
     }
 
@@ -40,7 +40,7 @@ class SearchNav extends Component {
                     placeholder="Search for users"
                     type="text"
                     name="search"
-                    onChange=
+                    onChange={this.handleChange}
                     value={this.state.search}
                 />
                 <Button type="submit">Search</Button>

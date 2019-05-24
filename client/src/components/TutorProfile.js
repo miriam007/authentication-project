@@ -31,12 +31,12 @@ class TutorProfile extends Component {
     }
 
     render() {
-        let props = this.props;
+        //let props = this.props;
         return (
             <div>
                 <h1>Tutor Profile</h1>
                 <div>Name: {this.state.name}</div>
-                <div>Level: {this.state.level}</div>
+                <div>Levels: {this.state.level}</div>
                 <div>About Me: {this.state.aboutMe}</div>
                 <div>Teaching Style: {this.state.teachingStyle}</div>
                 <div>Strengths: {this.state.strengths}</div>
